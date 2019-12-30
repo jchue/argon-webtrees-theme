@@ -1,1 +1,95 @@
 @import "argon";
+
+@each $color, $value in $theme-colors {
+  .btn-#{$color} {
+      &:hover {
+          background-color: lighten(theme-color(#{$color}), 5%);
+      }
+  }
+}
+
+#secondary-header {
+    background-color: theme-color("default");
+    color: theme-color("white");
+    @include font-size($font-size-sm);
+    padding: 0.313rem 0;
+
+    .wt-header-content {
+        align-items: center;
+
+        ul.wt-user-menu {
+            margin: 0 2.5rem 0 0;
+
+            & > li {
+                & > a {
+                    color: theme-color("white");
+                    display: inline-block;
+                    padding: 0.625rem 1.25rem;
+
+                    &:hover {
+                        color: darken(theme-color("white"), 20%);
+                    }
+                }
+            }
+        }
+
+        .wt-header-search {
+            .wt-header-search-field {
+                height: auto;
+            }
+
+            .wt-header-search-button {
+                padding: 0.625rem 0.75rem;
+            }
+        }
+    }
+}
+
+#primary-header {
+    background-color: theme-color("default");
+    box-shadow: 0 10px 20px rgba(50, 50, 93, .2);
+    left: 0;
+    padding: 1.25rem 0;
+    right: 0;
+    top: 0;
+    z-index: 1001;
+
+    .wt-header-content {
+        align-items: center;
+
+        .wt-site-title {
+            color: theme-color("white");
+            flex-basis: content;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0;
+
+            a {
+                color: theme-color("white");
+
+                &:hover {
+                    color: darken(theme-color("white"), 20%);
+                }
+            }
+        }
+
+        .wt-primary-navigation {
+            flex-basis: content;
+
+            ul.wt-genealogy-menu {
+                justify-content: right;
+
+                & > li {
+                    & > a {
+                        color: theme-color("white");
+                        padding: 0.75rem;
+
+                        &:hover {
+                            color: darken(theme-color("white"), 20%);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

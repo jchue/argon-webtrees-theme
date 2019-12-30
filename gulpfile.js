@@ -28,7 +28,7 @@ function scss() {
 }
 
 function js() {
-    return gulp.src('src/*.js')
+    return gulp.src('src/js/*.js')
     .pipe(babel())
     .pipe(uglify())
     .pipe(gulp.dest('resources/js/'));

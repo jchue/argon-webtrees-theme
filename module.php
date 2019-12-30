@@ -34,7 +34,7 @@ return new class extends MinimalTheme implements ModuleCustomInterface {
         View::registerNamespace($this->name(), $this->resourcesFolder() . 'views/');
 
         // Replace an existing view with our own version.
-        View::registerCustomView('::chart-box', $this->name() . '::chart-box');
+        View::registerCustomView('::layouts/default', $this->name() . '::layouts/default');
     }
 
     /**
@@ -62,5 +62,17 @@ return new class extends MinimalTheme implements ModuleCustomInterface {
         $stylesheets[] = $this->assetUrl('css/theme.css');
 
         return $stylesheets;
+    }
+
+    /**
+     * Add our own scripts.
+     *
+     * @return array
+     */
+    public function scripts(): array
+    {
+        $scripts[] = $this->assetUrl('js/script.js');
+
+        return $scripts;
     }
 };
