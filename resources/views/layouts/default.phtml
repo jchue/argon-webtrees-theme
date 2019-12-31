@@ -155,9 +155,9 @@ use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
         </main>
 
         <footer class="wt-footers d-print-none" id="site-footer">
-            <div class="wide-wrapper">
+            <div class="container">
                 <?= app(ModuleService::class)->findByInterface(ModuleFooterInterface::class)->map(static function (ModuleFooterInterface $module) use ($request): string {
-        return $module->getFooter($request);
+                    return $module->getFooter($request);
                 })->implode('') ?>
             </div>
         </footer>
