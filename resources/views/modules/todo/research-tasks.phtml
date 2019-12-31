@@ -1,0 +1,52 @@
+<?php
+
+use Fisharebest\Webtrees\I18N;
+
+?>
+
+<table
+    class="table table-sm wt-table-tasks datatables d-none"
+    <?= view('lists/datatables-attributes') ?>
+    data-columns="[null, null, null, null]"
+    data-info="false"
+    data-paging="false"
+    data-searching="false"
+>
+    <thead>
+        <tr>
+            <th class="d-none d-md-table-cell wt-side-block-optional">
+                <?= I18N::translate('Date') ?>
+            </th>
+            <th>
+                <?= I18N::translate('Record') ?>
+            </th>
+            <th class="d-none d-md-table-cell wt-side-block-optional">
+                <?= I18N::translate('Username') ?>
+            </th>
+            <th>
+                <?= I18N::translate('Research task') ?>
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <?php foreach ($tasks as $task) : ?>
+            <tr>
+                <td data-sort="<?= $task->date()->julianDay() ?>" class="d-none d-md-table-cell wt-side-block-optional">
+                    <?= $task->date()->display() ?>
+                </td>
+                <td data-sort="<?= e($task->record()->sortName()) ?>">
+                    <a href="<?= e($task->record()->url()) ?>">
+                        <?= $task->record()->fullName() ?>
+                    </a>
+                </td>
+                <td class="d-none d-md-table-cell wt-side-block-optional">
+                    <?= e($task->attribute('_WT_USER')) ?>
+                </td>
+                <td dir="auto">
+                    <?= e($task->value()) ?>
+                </td>
+            </tr>
+        <?php endforeach ?>
+    </tbody>
+</table>

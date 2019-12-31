@@ -1,0 +1,22 @@
+<?php
+
+use Fisharebest\Webtrees\I18N;
+
+?>
+
+<div class="list-group">
+    <?php foreach ($records as $record) : ?>
+        <a href="<?= e($record->url()) ?>" class="list-group-item list-group-item-action">
+            <span class="d-block"><?= $record->fullName() ?></span>
+            <?php if ($record->lastChangeTimestamp()->unix() !== 0) : ?>
+                <small class="d-block">
+                    <?php if ($show_user) : ?>
+                        <?= /* I18N: [a record was] Changed on <date/time> by <user> */I18N::translate('Changed on %1$s by %2$s', view('components/datetime', ['timestamp' => $record->lastChangeTimestamp()]), e($record->lastChangeUser())) ?>
+                    <?php else : ?>
+                        <?= /* I18N: [a record was] Changed on <date/time> */ I18N::translate('Changed on %1$s', view('components/datetime', ['timestamp' => $record->lastChangeTimestamp()])) ?>
+                    <?php endif ?>
+                </small>
+            <?php endif ?>
+        </a>
+    <?php endforeach ?>
+</div>

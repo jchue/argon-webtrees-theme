@@ -36,10 +36,16 @@ return new class extends MinimalTheme implements ModuleCustomInterface {
         // Replace an existing view with our own version.
         View::registerCustomView('::layouts/default', $this->name() . '::layouts/default');
 
+        // Site Footer
         View::registerCustomView('::modules/powered-by-webtrees/footer', $this->name() . '::modules/powered-by-webtrees/footer'); // Remove text-center class
         View::registerCustomView('::modules/contact-links/footer', $this->name() . '::modules/contact-links/footer'); // Remove text-center and padding classes
         View::registerCustomView('::modules/hit-counter/footer', $this->name() . '::modules/hit-counter/footer'); // Remove text-center and padding classes
         View::registerCustomView('::modules/privacy-policy/footer', $this->name() . '::modules/privacy-policy/footer'); // Remove text-center and padding classes
+
+        // Tree Page Blocks
+        View::registerCustomView('::modules/block-template', $this->name() . '::modules/block-template'); // Remove card classes from block
+        View::registerCustomView('::modules/todo/research-tasks', $this->name() . '::modules/todo/research-tasks'); // Make table normal
+        View::registerCustomView('::modules/recent_changes/changes-list', $this->name() . '::modules/recent_changes/changes-list'); // Restructure changes list
     }
 
     /**

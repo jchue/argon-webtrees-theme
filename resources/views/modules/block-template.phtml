@@ -1,0 +1,20 @@
+<?php
+
+use Fisharebest\Webtrees\I18N;
+
+?>
+
+<div class="mb-4 wt-block wt-block-<?= e($block) ?>" id="block-<?= e($id) ?>">
+    <h3 class="wt-block-header wt-block-header-<?= e($block) ?>" dir="auto">
+        <?php if ($config_url !== '') : ?>
+            <a class="btn btn-link" href="<?= e($config_url) ?>" title="<?= I18N::translate('Preferences') ?>">
+                <?= view('icons/preferences') ?>
+                <span class="sr-only"><?= I18N::translate('Preferences') ?></span>
+            </a>
+        <?php endif ?>
+        <?= $title ?>
+    </h3>
+    <div class="wt-block-content wt-block-content-<?= e($block) ?>">
+        <?= $content ?>
+    </div>
+</div>
