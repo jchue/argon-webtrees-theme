@@ -5,7 +5,15 @@ $card-spacer-x: 1rem;
 $table-cell-padding: 1rem;
 $table-cell-padding-sm: 0.75rem;
 
+$m-color: #f4fdff;
+$f-color: #fff4f9;
+
 @import "argon";
+
+caption {
+    caption-side: top;
+    padding-top: 0;
+}
 
 table,
 .table {
@@ -267,6 +275,10 @@ table,
     text-align: center;
 }
 
+/******
+ * bootstrap
+ */
+
 .list-group {
     a.list-group-item {
         border-right: none;
@@ -274,4 +286,20 @@ table,
         border-radius: 0;
         font-size: $font-size-sm;
     }
+}
+
+/*****
+ * Webtrees
+ */
+
+.wt-gender-M {
+    background-color: $m-color;
+}
+
+.wt-gender-F {
+    background-color: $f-color;
+}
+
+.label {
+    font-weight: $font-weight-bold;
 }

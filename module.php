@@ -46,6 +46,9 @@ return new class extends MinimalTheme implements ModuleCustomInterface {
         View::registerCustomView('::modules/block-template', $this->name() . '::modules/block-template'); // Remove card classes from block
         View::registerCustomView('::modules/todo/research-tasks', $this->name() . '::modules/todo/research-tasks'); // Make table normal
         View::registerCustomView('::modules/recent_changes/changes-list', $this->name() . '::modules/recent_changes/changes-list'); // Restructure changes list
+
+        // Individual Page
+        View::registerCustomView('::individual-page', $this->name() . '::individual-page'); // Add class to header section
     }
 
     /**
