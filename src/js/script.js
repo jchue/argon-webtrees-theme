@@ -4,7 +4,7 @@ const secondaryHeaderHeight = secondaryHeader.offsetHeight;
 const primaryHeader = document.getElementById('primary-header');
 const primaryHeaderHeight = primaryHeader.offsetHeight;
 
-const siteContent = document.getElementById('site-content');
+const siteContent = document.getElementById('content');
 
 function setHeader() {
     const scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
