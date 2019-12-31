@@ -1,4 +1,142 @@
+$card-border-width: 0.188rem;
+$card-spacer-y: 0.5rem;
+$card-spacer-x: 1rem;
+
+$table-cell-padding: 1rem;
+$table-cell-padding-sm: 0.75rem;
+
 @import "argon";
+
+table,
+.table {
+    td,
+    th,
+    thead th,
+    tbody th,
+    tbody td {
+        border: none;
+        font-size: $font-size-sm;
+    }
+
+    th {
+        background-color: $gray-100;
+    }
+
+    thead th {
+        border-top: $table-border-width solid $table-border-color;
+    }
+
+    td,
+    tbody th,
+    tbody td {
+        border-bottom: $table-border-width solid $table-border-color;
+    }
+
+    tr:first-child {
+        th,
+        td {
+            border-top: $table-border-width solid $table-border-color;
+        }
+    }
+}
+
+.table-sm {
+    td,
+    th,
+    thead th,
+    tbody th,
+    tbody td {
+        font-size: $font-size-xs;
+    }
+}
+
+.table-bordered {
+    td,
+    th,
+    thead th,
+    tbody th,
+    tbody td {
+        border-right: $table-border-width solid $table-border-color;
+    }
+}
+
+.sorting,
+.sorting_asc,
+.sorting_desc {
+    background-clip: padding-box;
+    cursor: pointer;
+    position: relative;
+
+    &::before,
+    &::after {
+        bottom: 1.2rem;
+        display: block;
+        position: absolute;
+
+        .table-sm & {
+            bottom: 0.9rem;
+        }
+    }
+
+    &::before {
+        content: "\2191";
+    }
+
+    &::after {
+        content: "\2193";
+    }
+}
+
+[dir="ltr"] .sorting,
+[dir="ltr"] .sorting_asc,
+[dir="ltr"] .sorting_desc {
+    &::before {
+        right: 0.85em;
+    }
+
+    &::after {
+        right: 0.5em;
+    }
+}
+
+[dir="rtl"] .sorting,
+[dir="rtl"] .sorting_asc,
+[dir="rtl"] .sorting_desc {
+    &::before {
+        left: 0.85em;
+    }
+
+    &::after {
+        left: 0.5em;
+    }
+}
+
+.sorting {
+    &::before,
+    &::after {
+        opacity: 0.3;
+    }
+}
+
+.sorting_asc {
+    &::before {
+        opacity: 1;
+    }
+
+    &::after {
+        opacity: 0.3;
+    }
+}
+
+.sorting_desc {
+    &::before {
+        opacity: 0.3;
+    }
+
+    &::after {
+        opacity: 1;
+    }
+}
 
 @each $color, $value in $theme-colors {
   .btn-#{$color} {
@@ -6,6 +144,30 @@
           background-color: lighten(theme-color(#{$color}), 5%);
       }
   }
+}
+
+.btn-link {
+    padding: 0;
+}
+
+.card {
+    border-color: rgba($black, .05);
+    margin-bottom: 0.625rem;
+
+    .card-header {
+        background-color: rgba($black, .05);
+        border-bottom: none;
+        font-weight: $font-weight-extra-bold;
+
+        &[id^=name-header-] {
+            font-size: $font-size-lg;
+        }
+
+        &#name-header-add {
+            font-size: $font-size-base;
+            font-weight: $font-weight-normal;
+        }
+    }
 }
 
 #secondary-header {
@@ -91,5 +253,18 @@
                 }
             }
         }
+    }
+}
+
+#content {
+    padding-top: 3rem;
+}
+
+.list-group {
+    a.list-group-item {
+        border-right: none;
+        border-left: none;
+        border-radius: 0;
+        font-size: $font-size-sm;
     }
 }
