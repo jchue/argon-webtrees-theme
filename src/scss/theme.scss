@@ -7,6 +7,7 @@ $table-cell-padding-sm: 0.75rem;
 
 $m-color: #f4fdff;
 $f-color: #fff4f9;
+$u-color: #fff;
 
 $box-shadow-xs: 0 1px 3px rgba(50,50,93,.15), 0 1px 0 rgba(0,0,0,.02);
 
@@ -398,6 +399,10 @@ select {
 
 .wt-gender-F {
     background-color: $f-color;
+}
+
+.wt-gender-U {
+    background-color: $u-color;
 }
 
 .label {
@@ -864,6 +869,10 @@ table.tv_tree {
         background-color: $m-color;
     }
 
+    .wt-chart-box-u {
+        background-color: $u-color;
+    }
+
     .wt-chart-box-zoom-dropdown {
         border: none;
         color: theme-colors("default");
@@ -1115,5 +1124,155 @@ table.tv_tree {
         font-size: $font-size-sm;
         padding: 0.625rem 1rem;
         z-index: 1;
+    }
+}
+
+/* Pedigree Chart */
+
+.wt-chart-pedigree {
+    overflow-y: auto;
+
+    .wt-chart-box-lifespan {
+        display: none;
+    }
+
+    .wt-chart-pedigree-left,
+    .wt-chart-pedigree-right {
+        .wt-chart-box {
+            margin-bottom: 1.5rem;
+            min-height: 5rem;
+            width: 15rem;
+        }
+    }
+
+    .wt-chart-pedigree-right {
+        .wt-chart-box {
+            margin-right: 1.5rem;
+        }
+
+        .wt-pedigree-lines {
+            border: $border-width solid $border-color;
+            bottom: 25%;
+            height: 50%;
+            top: 25%;
+            width: 25%;
+            z-index: -1;
+
+            [dir=ltr] & {
+                border-right: none;
+                border-radius: $border-radius 0 0 $border-radius;
+                right: 0;
+            }
+
+            [dir=rtl] & {
+                border-left: none;
+                border-radius: 0 $border-radius $border-radius 0;
+                left: 0;
+            }
+        }
+
+        .wt-generation-rev-2 > .wt-pedigree-lines {
+            bottom: 12.5%;
+            height: 75%;
+            top: 12.5%;
+        }
+    }
+
+    .wt-chart-pedigree-left {
+        .wt-chart-box {
+            margin-left: 1.5rem;
+        }
+
+        .wt-pedigree-lines {
+            border: $border-width solid $border-color;
+            top: 25%;
+            bottom: 25%;
+            width: 25%;
+            height: 50%;
+            z-index: -1;
+
+            [dir=ltr] & {
+                border-left: none;
+                border-radius: 0 $border-radius $border-radius 0;
+                left: 0;
+            }
+
+            [dir=rtl] & {
+                border-right: none;
+                border-radius: $border-radius 0 0 $border-radius;
+                right: 0;
+            }
+        }
+
+        .wt-generation-rev-2 > .wt-pedigree-lines {
+            bottom: 12.5%;
+            height: 75%;
+            top: 12.5%;
+        }
+    }
+
+    .wt-chart-pedigree-down,
+    .wt-chart-pedigree-up {
+        .wt-chart-box {
+            height: 8rem;
+            margin-right: 1.5rem;
+            min-width: 10rem;
+        }
+    }
+
+    .wt-chart-pedigree-down {
+        width: -webkit-max-content;
+        width: -moz-max-content;
+        width: max-content;
+
+        .wt-chart-box {
+            margin-bottom: 1.5rem;
+        }
+
+        .wt-pedigree-lines {
+            border: $border-width solid $border-color;
+            border-bottom: none;
+            border-radius: $border-radius $border-radius 0 0;
+            bottom: 0;
+            height: 25%;
+            left: 25%;
+            right: 25%;
+            width: 50%;
+            z-index: -1;
+        }
+
+        .wt-generation-rev-2 > .wt-pedigree-lines {
+            left: 12.5%;
+            right: 12.5%;
+            width: 75%;
+        }
+    }
+
+    .wt-chart-pedigree-up {
+        width: -webkit-max-content;
+        width: -moz-max-content;
+        width: max-content;
+
+        .wt-chart-box {
+            margin-top: 1.5rem;
+        }
+
+        .wt-pedigree-lines {
+            border: $border-width solid $border-color;
+            border-top: none;
+            border-radius: 0 0 $border-radius $border-radius;
+            height: 25%;
+            left: 25%;
+            right: 25%;
+            top: 0;
+            width: 50%;
+            z-index: -1;
+        }
+
+        .wt-generation-rev-2 > .wt-pedigree-lines {
+            left: 12.5%;
+            right: 12.5%;
+            width: 75%;
+        }
     }
 }
