@@ -1425,3 +1425,21 @@ table.tv_tree {
     -o-transition: -o-stroke-dashoffset 0.3s ease-out,-o-stroke-opacity 0.3s ease-in;
     transition: stroke-dashoffset 0.3s ease-out,stroke-opacity 0.3s ease-in;
 }
+
+/* Relationships Chart */
+
+.wt-chart-relationships {
+    .wt-chart-box {
+        height: 5rem;
+        width: 15rem;
+    }
+
+    .wt-chart-box-lifespan {
+        display: none;
+    }
+
+    .hline-text,
+    .vline-text {
+        font-size: $font-size-xs;
+    }
+}
