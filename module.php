@@ -62,6 +62,9 @@ return new class extends MinimalTheme implements ModuleCustomInterface {
 
         // FAQ Page
         View::registerCustomView('::modules/faq/show', $this->name() . '::modules/faq/show'); // Adjust TOC and back-to-top anchor
+
+        // Lists
+        View::registerCustomView('::lists/surnames-table', $this->name() . '::lists/surnames-table'); // Remove small and bordered classes from table
     }
 
     /**
