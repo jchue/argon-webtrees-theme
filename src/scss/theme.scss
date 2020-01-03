@@ -242,6 +242,10 @@ select {
     content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAADzN3VRAAAAHlBMVEX////c3NzR0dHIyMjAwMC4uLiwsLCoqKigoKCYmJgUz44qAAAAAXRSTlMAQObYZgAAAHxJREFUeAG90DEOQzEIA9AkYEzuf+EKflQ1gq3S9+iHF8afIWBdr3OJiDayJIUFnl60jkxCVKUTDUERikagRZA1gFFyhFWYC8xRE721TzAYjA1oQLdxRG8krtryPMHIPX++fyR6p/vWBP/2mRD3lZN7kLAfORumHZrjrXwAmrEEf5OgJoUAAAAASUVORK5CYII=");
 }
 
+.icon-pedigree {
+    content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAAAAAAevcqWAAAABGdBTUEAALGPC/xhBQAAAAJ0Uk5TAP9bkSK1AAAAtklEQVR4AWP4jwApyTP/I/HthPnUYfzeif//qwgJKvZA+CmSIm7/7Rk4lKDyOkJC3IuOZsctBfLTfbr/67EL8a87F+T9/z9DjCC7wqJp9toVl8xYuOT+MxjxinEUvV/Q/2y/tDCv7EyGZAk+hf+VMmrh5z05hXWA+hvD/v+X4+flXXcgzmcOzHxuQYFF+0NMZ0D5Bboasf+tWfnlFsLcu/j/fwlhQdH5SO4P4+Oy+4/sv8qW//8B7yWISpbQQfoAAAAASUVORK5CYII=");
+}
+
 @each $color, $value in $theme-colors {
   .btn-#{$color} {
       &:hover {
@@ -885,5 +889,95 @@ table.tv_tree {
     .wt-chart-box-facts,
     .wt-chart-box-thumbnail {
         display: none
+    }
+}
+
+/* Descendants Chart */
+
+.wt-chart-descendants {
+    .wt-chart-box {
+        font-size: $font-size-sm;
+        margin-bottom: 0.313rem;
+        margin-top: 0.313rem;
+        min-height: 5rem;
+        width: 20rem;
+    }
+
+    .wt-chart-box-lifespan {
+        display: none
+    }
+
+    .wt-chart-vertical-indent {
+        width: 2rem;
+    }
+
+    .wt-chart-vertical-line {
+        height: 100%;
+        width: 50%;
+
+        [dir=ltr] & {
+            border-left: $border-width solid $border-color;
+            right: 0;
+        }
+
+        [dir=rtl] & {
+            border-right: $border-width solid $border-color;
+            left: 0;
+        }
+    }
+
+    .wt-chart-vertical-child-line {
+        border-bottom: thin solid $border-color;
+        height: 1.5rem;
+        top: 0;
+        width: 50%;
+
+        [dir=ltr] & {
+            right: 0;
+        }
+
+        [dir=rtl] & {
+            left: 0;
+        }
+    }
+
+    .wt-chart-vertical-last-child-line {
+        border-bottom: $border-width solid $border-color;
+        height: 1.5rem;
+        top: 0;
+        width: 50%;
+
+        [dir=ltr] & {
+            border-left: $border-width solid $border-color;
+            border-radius: 0 0 0 $border-radius;
+            right: 0;
+        }
+
+        [dir=rtl] & {
+            border-right: $border-width solid $border-color;
+            border-radius: 0 0 $border-radius 0;
+            left: 0;
+        }
+    }
+
+    .wt-daboville-number {
+        border: $border-width dotted $border-color;
+        font-size: $font-size-sm;
+        margin: 0 0.625rem;
+        padding: 0.313rem 0.625rem;
+    }
+
+    .chart-expand {
+        display: none;
+    }
+
+    .collapsed {
+        .chart-collapse {
+            display: none;
+        }
+
+        .chart-expand {
+            display: inline;
+        }
     }
 }
