@@ -1554,3 +1554,40 @@ table.tv_tree {
         }
     }
 }
+
+/* FAQ */
+
+.faq_list {
+    margin-bottom: $hr-margin-y;
+}
+
+.faq {
+    border-top: $border-width solid $border-color;
+    margin-bottom: $hr-margin-y;
+    padding-top: $hr-margin-y;
+
+    *:last-child {
+        margin-bottom: 0;
+    }
+
+    .faq_title {
+        align-items: center;
+        display: flex;
+        margin-top: -6.875rem; // Fixed header offset
+        padding-top: 6.875rem; // Fixed header offset
+
+        h3 {
+            flex-grow: 1;
+        }
+
+        .faq_top {
+            flex-basis: content;
+            font-size: $font-size-base;
+            font-weight: normal;
+        }
+    }
+
+    .faq_body {
+        margin-bottom: $hr-margin-y;
+    }
+}

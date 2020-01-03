@@ -59,6 +59,9 @@ return new class extends MinimalTheme implements ModuleCustomInterface {
         View::registerCustomView('::modules/lifespans-chart/chart', $this->name() . '::modules/lifespans-chart/chart'); // Adjust vertical positioning and set background based on gender class
         View::registerCustomView('::modules/pedigree-map/chart', $this->name() . '::modules/pedigree-map/chart'); // Remove padding in sidebar
         View::registerCustomView('::modules/statistics-chart/page', $this->name() . '::modules/statistics-chart/page'); // Change tabs to nav pills
+
+        // FAQ Page
+        View::registerCustomView('::modules/faq/show', $this->name() . '::modules/faq/show'); // Adjust TOC and back-to-top anchor
     }
 
     /**
