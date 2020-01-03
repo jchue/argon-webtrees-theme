@@ -1,0 +1,60 @@
+<?php
+
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\View;
+
+?>
+
+<form method="post" action="<?= e(route('module', ['module' => 'descendancy', 'action' => 'Descendants', 'tree' => $tree->name()])) ?>" onsubmit="return false;">
+    <div class="form-group">
+        <input type="search" name="sb_desc_name" id="sb_desc_name" class="form-control" placeholder="<?= I18N::translate('Search') ?>">
+    </div>
+</form>
+
+<div id="sb_desc_content">
+    <ul>
+        <?= $individual_list ?>
+    </ul>
+</div>
+
+<?php View::push('javascript') ?>
+<script>
+  function dsearchQ() {
+    var query = $("#sb_desc_name").val();
+    if (query.length>1) {
+      $("#sb_desc_content").load(<?= json_encode(route('module', ['module' => 'descendancy', 'action' => 'Search', 'tree' => $tree->name()])) ?> + "&search=" + encodeURIComponent(query));
+    }
+  }
+
+  $("#sb_desc_name").focus(function(){this.select();});
+  $("#sb_desc_name").blur(function(){if (this.value === "") this.value="<?= I18N::translate('Search') ?>";});
+  var dtimerid = null;
+  $("#sb_desc_name").keyup(function(e) {
+    if (dtimerid) window.clearTimeout(dtimerid);
+    dtimerid = window.setTimeout("dsearchQ()", 500);
+  });
+
+  $("#sb_desc_content").on("click", ".sb_desc_indi", function() {
+    var self = $(this),
+        state = self.children(".plusminus"),
+        target = self.siblings("div");
+    if(state.hasClass("icon-plus")) {
+      if (jQuery.trim(target.html())) {
+        target.show("fast"); // already got content so just show it
+      } else if (self.attr("href") !== "#") {
+        target
+          .hide()
+          .load(self.attr("href"), function(response, status, xhr) {
+            if(status === "success" && response !== "") {
+              target.show("fast");
+            }
+          })
+      }
+    } else {
+      target.hide("fast");
+    }
+    state.toggleClass("icon-minus icon-plus");
+    return false;
+  });
+</script>
+<?php View::endpush() ?>

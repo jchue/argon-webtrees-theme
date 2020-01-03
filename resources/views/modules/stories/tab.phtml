@@ -1,0 +1,34 @@
+<?php
+
+use Fisharebest\Webtrees\I18N;
+
+?>
+
+<div class="wt-tab-stories py-4">
+    <?php foreach ($stories as $story) : ?>
+        <article class="story mb-4 pb-4">
+            <header class="story_title descriptionbox text-center rela">
+                <h4><?= e($story->title) ?></h4>
+            </header>
+            <div class="story_body optionbox">
+                <?= $story->story_body ?>
+            </div>
+            <?php if ($is_admin) : ?>
+                <footer class="story_edit text-right">
+                    <a href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'block_id' => $story->block_id, 'tree' => $tree->name()])) ?>" class="btn btn-link">
+                        <?= view('icons/edit') ?>
+                        <?= I18N::translate('Edit the story') ?>
+                    </a>
+                </footer>
+            <?php endif ?>
+        </article>
+    <?php endforeach ?>
+
+    <?php if ($is_admin && $stories === []) : ?>
+        <div>
+            <a href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'xref' => $individual->xref(), 'tree' => $tree->name()])) ?>">
+                <?= I18N::translate('Add a story') ?>
+            </a>
+        </div>
+    <?php endif ?>
+</div>
