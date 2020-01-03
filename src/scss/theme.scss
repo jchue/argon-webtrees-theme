@@ -391,6 +391,37 @@ select {
     }
 }
 
+/* Hack for Pagination Arrows */
+
+.paginate_button.previous,
+.paginate_button.next {
+    a {
+        visibility: hidden;
+
+        &::after {
+            @extend .page-link;
+            border-radius: 50%;
+            display: block;
+            height: 36px;
+            padding-right: 0;
+            padding-left: 0;
+            position: absolute;
+            text-align: center;
+            top: 0;
+            visibility: visible;
+            width: 36px;
+        }
+    }
+}
+
+.paginate_button.previous a::after {
+    content: "\2039";
+}
+
+.paginate_button.next a::after {
+    content: "\203A";
+}
+
 /*****
  * Webtrees
  */
