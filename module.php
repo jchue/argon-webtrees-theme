@@ -57,6 +57,7 @@ return new class extends MinimalTheme implements ModuleCustomInterface {
         // Charts
         View::registerCustomView('::chart-box', $this->name() . '::chart-box'); // Increase thumbnail margin, update pedigree icon
         View::registerCustomView('::modules/lifespans-chart/chart', $this->name() . '::modules/lifespans-chart/chart'); // Adjust vertical positioning and set background based on gender class
+        View::registerCustomView('::modules/pedigree-map/chart', $this->name() . '::modules/pedigree-map/chart'); // Remove padding in sidebar
     }
 
     /**
