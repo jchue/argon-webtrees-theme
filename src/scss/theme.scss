@@ -11,6 +11,7 @@ $f-color: #fff4f9;
 $box-shadow-xs: 0 1px 3px rgba(50,50,93,.15), 0 1px 0 rgba(0,0,0,.02);
 
 @import "argon";
+@import "select2/core";
 
 caption {
     caption-side: top;
@@ -57,6 +58,72 @@ button {
 
 select {
     @extend .custom-select;
+}
+
+.select2-container--default {
+    // Form field
+    .select2-selection--single {
+        @extend .form-control;
+        align-items: center;
+        border: $input-border-width solid $input-border-color;
+        height: auto;
+        display: flex;
+
+        // Main content
+        .select2-selection__rendered {
+            color: $input-color;
+            flex-grow: 1;
+        }
+
+        // Arrow
+        .select2-selection__arrow {
+            flex-basis: content;
+            position: static;
+
+            b {
+                left: auto;
+            }
+        }
+    }
+}
+
+// Dropdown options
+.select2-dropdown--below {
+    border: none;
+    box-shadow: $dropdown-box-shadow;
+
+    // Search field
+    .select2-search__field {
+        @extend .form-control;
+        padding: $input-padding-y $input-padding-x;
+
+        &:focus {
+            border-color: $input-focus-border-color;
+        }
+    }
+
+    // Results list
+    .select2-results {
+        ul.select2-results__options {
+            margin-bottom: 1rem;
+
+            li:not(.loading-results):not([role=alert]) {
+                @extend .dropdown-item;
+
+                .gallery {
+                    margin-right: 1rem;
+                }
+            }
+
+            li.select2-results__option--highlighted {
+                background-color: $component-hover-bg;
+            }
+
+            li[aria-selected=true] {
+                background-color: $dropdown-link-active-bg;
+            }
+        }
+    }
 }
 
 .table-sm {
@@ -251,7 +318,7 @@ select {
     padding: 1.25rem 0;
     right: 0;
     top: 0;
-    z-index: 1001;
+    z-index: 1052;
 
     .wt-header-content {
         align-items: center;
@@ -759,5 +826,64 @@ table.tv_tree {
         text-align: center;
         -webkit-transform: translateX(0);
         transform: translateX(0);
+    }
+}
+
+/*
+* Charts
+*/
+
+.wt-chart {
+    td {
+        border-bottom: none;
+    }
+
+    tr:first-child td {
+        border-top: none;
+    }
+
+    .wt-chart-box {
+        background: theme-colors("white");
+        border-radius: $border-radius;
+        box-shadow: $box-shadow-xs;
+        font-size: $font-size-xs;
+        margin-bottom: 0.125rem;
+        margin-top: 0.125rem;
+        padding: 0.5rem 0.625rem;
+    }
+
+    .wt-chart-box-f {
+        background-color: $f-color;
+    }
+
+    .wt-chart-box-m {
+        background-color: $m-color;
+    }
+
+    .wt-chart-box-zoom-dropdown {
+        border: none;
+        color: theme-colors("default");
+        font-size: $font-size-sm;
+        //line-height: $line-height-smallest;
+        padding: 0.625rem;
+    }
+}
+
+/* Compact Tree */
+
+.wt-chart-compact {
+    table {
+        border-collapse: separate;
+    }
+
+    .wt-chart-box {
+        height: 5rem;
+        width: 9.375rem;
+    }
+
+    .wt-chart-box-extra,
+    .wt-chart-box-facts,
+    .wt-chart-box-thumbnail {
+        display: none
     }
 }
