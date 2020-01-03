@@ -1443,3 +1443,114 @@ table.tv_tree {
         font-size: $font-size-xs;
     }
 }
+
+/* Timeline Chart */
+
+.wt-route-timeline-chart {
+    // Person panels
+    div[class*=person] {
+        font-size: $font-size-sm;
+        padding: 0.625rem 1rem;
+    }
+
+    .person0 {
+        background-color: theme-color("primary");
+        color: theme-color("white");
+
+        a {
+            color: theme-color("white");
+
+            &:hover {
+                color: darken(theme-color("white"), 20%);
+            }
+        }
+    }
+
+    .person1 {
+        background-color: theme-color("secondary");
+        color: $body-color;
+
+        a {
+            color: $body-color;
+
+            &:hover {
+                color: darken($body-color, 20%);
+            }
+        }
+    }
+
+    .person2 {
+        background-color: theme-color("info");
+        color: theme-color("white");
+
+        a {
+            color: theme-color("white");
+
+            &:hover {
+                color: darken(theme-color("white"), 20%);
+            }
+        }
+    }
+
+    .person3 {
+        background-color: theme-color("success");
+        color: theme-color("white");
+
+        a {
+            color: theme-color("white");
+
+            &:hover {
+                color: darken(theme-color("white"), 20%);
+            }
+        }
+    }
+
+    .person4 {
+        background-color: theme-color("danger");
+        color: theme-color("white");
+
+        a {
+            color: theme-color("white");
+
+            &:hover {
+                color: darken(theme-color("white"), 20%);
+            }
+        }
+    }
+
+    .person5 {
+        background-color: theme-color("warning");
+        color: theme-color("white");
+
+        a {
+            color: theme-color("white");
+
+            &:hover {
+                color: darken(theme-color("white"), 20%);
+            }
+        }
+    }
+}
+
+.wt-timeline-chart {
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    #timeline_chart {
+        position: relative;
+        top: 0;
+
+        [dir=ltr] & {
+            left: 0;
+        }
+
+        [dir=rtl] & {
+            right: 0;
+        }
+
+        td[class^=person] {
+            font-size: $font-size-xs;
+            padding: 0 0.5rem;
+        }
+    }
+}
