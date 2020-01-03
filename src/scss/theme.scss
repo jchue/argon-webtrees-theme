@@ -981,3 +981,134 @@ table.tv_tree {
         }
     }
 }
+
+/* Hourglass Chart */
+
+.wt-chart-hourglass {
+    overflow-y: auto;
+
+    .wt-chart-box {
+        margin-top: 0.625rem;
+        margin-bottom: 0.625rem;
+        width: 15rem;
+    }
+
+    .wt-chart-box-lifespan {
+        display: none;
+    }
+
+    .wt-chart-horizontal-spacer {
+        width: 1rem;
+    }
+
+    .wt-chart-horizontal-line {
+        border-bottom: $border-width solid $border-color;
+        height: 50%;
+        width: 1rem;
+    }
+
+    .wt-chart-horizontal-first-child {
+        border-top: $border-width solid $border-color;
+        height: 50%;
+        position: relative;
+        top: 50%;
+
+        [dir=ltr] & {
+            border-right: $border-width solid $border-color;
+            border-radius: 0 $border-radius 0 0;
+        }
+
+        [dir=rtl] & {
+            border-left: $border-width solid $border-color;
+            border-radius: $border-radius 0 0 0;
+        }
+    }
+
+    .wt-chart-horizontal-middle-child {
+        height: 100%;
+
+        [dir=ltr] & {
+            border-right: $border-width solid $border-color;
+        }
+
+        [dir=rtl] & {
+            border-left: $border-width solid $border-color;
+        }
+    }
+
+    .wt-chart-horizontal-last-child {
+        border-bottom: $border-width solid $border-color;
+        height: 50%;
+
+        [dir=ltr] & {
+            border-right: $border-width solid $border-color;
+            border-radius: 0 0 $border-radius 0;
+        }
+
+        [dir=rtl] & {
+            border-left: $border-width solid $border-color;
+            border-radius: 0 0 0 $border-radius;
+        }
+    }
+
+    .wt-chart-horizontal-first-parent {
+        border-top: $border-width solid $border-color;
+        height: 50%;
+        position: relative;
+        top: 50%;
+
+        [dir=ltr] & {
+            border-left: $border-width solid $border-color;
+            border-radius: $border-radius 0 0 0;
+        }
+
+        [dir=rtl] & {
+            border-right: $border-width solid $border-color;
+            border-radius: 0 $border-radius 0 0;
+        }
+    }
+
+    .wt-chart-horizontal-last-parent {
+        border-bottom: $border-width solid $border-color;
+        height: 50%;
+
+        [dir=ltr] & {
+            border-left: $border-width solid $border-color;
+            border-radius: 0 0 0 $border-radius;
+        }
+
+        [dir=rtl] & {
+            border-right: $border-width solid $border-color;
+            border-radius: 0 0 $border-radius 0;
+        }
+    }
+}
+
+.wt-lifespans-decade {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAAAlBAMAAAANYIJDAAAAGHRFWHRTb2Z0d2FyZQBwYWludC5uZXQgNC4wLjVlhTJlAAAACXBIWXMAAA7CAAAOwgEVKEqAAAAAD1BMVEUAAAAAAABHcEw2NjYAAADzBAk1AAAABHRSTlPT1wDTEG7QNgAAAElJREFUOMtjEFIiBBQYBlQNI03VAEWVUSgFIGWIoBgQojgpBgwDUM1hJMscit2jgM9ZVHOPC2Ew6NTQM3yGaPqhZx4kXc3AllEANjazI4q82bEAAAAASUVORK5CYII=");
+    background-position-y: bottom;
+    background-repeat: no-repeat;
+    background-size: 70px 37px;
+    display: inline-block;
+    height: 6rem;
+    width: 7rem;
+}
+
+.wt-lifespans-individual {
+    border-collapse: collapse;
+    border-radius: 4px;
+    box-shadow: 1px 1px 2px #cfcfdf;
+    font-size: $font-size-sm;
+    margin-top: 2rem;
+    padding: 0.5rem 1rem;
+}
+
+// Popup
+.wt-lifespans-summary {
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 1px 1px 2px #cfcfdf;
+    font-size: $font-size-sm;
+    padding: 1rem 1.5rem;
+    z-index: 1;
+}
