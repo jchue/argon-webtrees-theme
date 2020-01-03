@@ -50,6 +50,15 @@ table,
     }
 }
 
+button {
+    @extend .btn;
+    @extend .btn-primary;
+}
+
+select {
+    @extend .custom-select;
+}
+
 .table-sm {
     td,
     th,
@@ -160,6 +169,10 @@ table,
 .icon-plus {
     content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4wsPEyo0IwjHfwAAAH1JREFUOMvlk8ENwCAIRcF0I3ayM+FOzkQPWmPCb4L20qT/QvxGEJ4SfV3srWwtSl/XaU/6+o6FAzXUIiJSQ6eTt6pvg0u4ZZBQKFIEezAhkoRveDzSGm02CMzngGGmK0UUAMjQ24ayMoa0/4RfQGkz24YiHUgFP0MWx/ILXT2mYpxmWZVIAAAAAElFTkSuQmCC");
     vertical-align: middle;
+}
+
+.icon-mypage {
+    content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAADzN3VRAAAAHlBMVEX////c3NzR0dHIyMjAwMC4uLiwsLCoqKigoKCYmJgUz44qAAAAAXRSTlMAQObYZgAAAHxJREFUeAG90DEOQzEIA9AkYEzuf+EKflQ1gq3S9+iHF8afIWBdr3OJiDayJIUFnl60jkxCVKUTDUERikagRZA1gFFyhFWYC8xRE721TzAYjA1oQLdxRG8krtryPMHIPX++fyR6p/vWBP/2mRD3lZN7kLAfORumHZrjrXwAmrEEf5OgJoUAAAAASUVORK5CYII=");
 }
 
 @each $color, $value in $theme-colors {
@@ -320,7 +333,9 @@ table,
     font-weight: $font-weight-bold;
 }
 
-/* Individual Page */
+/*****
+ * Individual Page
+ *****/
 
 /* Families Tab */
 
@@ -712,4 +727,37 @@ table.tv_tree {
 
 #sidebar-content-extra_info {
     font-size: $font-size-sm;
+}
+
+/*****
+ * User Page
+ */
+
+.wt-block-content-user_messages {
+    label {
+        display: block;
+    }
+
+    select {
+        margin-right: 2%;
+        width: 83%;
+    }
+
+    button {
+        margin: 0;
+        padding-right: 0;
+        padding-left: 0;
+        width: 15%;
+    }
+
+    .list_label:first-child {
+        text-align: center;
+    }
+
+    .center {
+        left: auto;
+        text-align: center;
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
 }
