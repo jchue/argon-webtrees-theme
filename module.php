@@ -54,7 +54,9 @@ return new class extends MinimalTheme implements ModuleCustomInterface {
         View::registerCustomView('::modules/stories/tab', $this->name() . '::modules/stories/tab'); // Add container for story
         View::registerCustomView('::modules/descendancy/sidebar', $this->name() . '::modules/descendancy/sidebar'); // Add Bootstrap form classes
 
+        // Charts
         View::registerCustomView('::chart-box', $this->name() . '::chart-box'); // Increase thumbnail margin, update pedigree icon
+        View::registerCustomView('::modules/lifespans-chart/chart', $this->name() . '::modules/lifespans-chart/chart'); // Adjust vertical positioning and set background based on gender class
     }
 
     /**

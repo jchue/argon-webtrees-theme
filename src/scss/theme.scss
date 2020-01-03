@@ -1084,31 +1084,36 @@ table.tv_tree {
     }
 }
 
-.wt-lifespans-decade {
-    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAAAlBAMAAAANYIJDAAAAGHRFWHRTb2Z0d2FyZQBwYWludC5uZXQgNC4wLjVlhTJlAAAACXBIWXMAAA7CAAAOwgEVKEqAAAAAD1BMVEUAAAAAAABHcEw2NjYAAADzBAk1AAAABHRSTlPT1wDTEG7QNgAAAElJREFUOMtjEFIiBBQYBlQNI03VAEWVUSgFIGWIoBgQojgpBgwDUM1hJMscit2jgM9ZVHOPC2Ew6NTQM3yGaPqhZx4kXc3AllEANjazI4q82bEAAAAASUVORK5CYII=");
-    background-position-y: bottom;
-    background-repeat: no-repeat;
-    background-size: 70px 37px;
-    display: inline-block;
-    height: 6rem;
-    width: 7rem;
-}
+/* Lifespans Chart */
 
-.wt-lifespans-individual {
-    border-collapse: collapse;
-    border-radius: 4px;
-    box-shadow: 1px 1px 2px #cfcfdf;
-    font-size: $font-size-sm;
-    margin-top: 2rem;
-    padding: 0.5rem 1rem;
-}
+.wt-timeline-chart {
+    // Timeline markers
+    .wt-lifespans-decade {
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAAAlBAMAAAANYIJDAAAAGHRFWHRTb2Z0d2FyZQBwYWludC5uZXQgNC4wLjVlhTJlAAAACXBIWXMAAA7CAAAOwgEVKEqAAAAAD1BMVEUAAAAAAABHcEw2NjYAAADzBAk1AAAABHRSTlPT1wDTEG7QNgAAAElJREFUOMtjEFIiBBQYBlQNI03VAEWVUSgFIGWIoBgQojgpBgwDUM1hJMscit2jgM9ZVHOPC2Ew6NTQM3yGaPqhZx4kXc3AllEANjazI4q82bEAAAAASUVORK5CYII=");
+        background-position-y: bottom;
+        background-repeat: no-repeat;
+        background-size: 70px 37px;
+        display: inline-block;
+        height: 3.75rem;
+        width: 4.375rem;
+    }
 
-// Popup
-.wt-lifespans-summary {
-    background-color: #fff;
-    border-radius: 4px;
-    box-shadow: 1px 1px 2px #cfcfdf;
-    font-size: $font-size-sm;
-    padding: 1rem 1.5rem;
-    z-index: 1;
+    // Lifespans
+    .wt-lifespans-individual {
+        border-radius: $border-radius;
+        box-shadow: $box-shadow-xs;
+        font-size: $font-size-sm;
+        margin-top: 1rem;
+        padding: 0.313rem 0.625rem;
+    }
+
+    // Popup
+    .wt-lifespans-summary {
+        background-color: #fff;
+        border-radius: $dropdown-border-radius;
+        box-shadow: $dropdown-box-shadow;
+        font-size: $font-size-sm;
+        padding: 0.625rem 1rem;
+        z-index: 1;
+    }
 }
