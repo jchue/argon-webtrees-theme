@@ -1156,7 +1156,9 @@ table.tv_tree {
 * Charts
 */
 
-.wt-chart {
+// Also includes Family page (since it utilizes many of the same components but lacks a chart wrapper class)
+.wt-chart,
+.wt-family-members {
     td {
         border-bottom: none;
     }
@@ -1193,6 +1195,92 @@ table.tv_tree {
         font-size: $font-size-sm;
         //line-height: $line-height-smallest;
         padding: 0.625rem;
+    }
+
+    .wt-chart-horizontal-spacer {
+        width: 1rem;
+    }
+
+    .wt-chart-horizontal-line {
+        border-bottom: $border-width solid $border-color;
+        height: 50%;
+        width: 1rem;
+    }
+
+    .wt-chart-horizontal-first-child {
+        border-top: $border-width solid $border-color;
+        height: 50%;
+        position: relative;
+        top: 50%;
+
+        [dir=ltr] & {
+            border-right: $border-width solid $border-color;
+            border-radius: 0 $border-radius 0 0;
+        }
+
+        [dir=rtl] & {
+            border-left: $border-width solid $border-color;
+            border-radius: $border-radius 0 0 0;
+        }
+    }
+
+    .wt-chart-horizontal-middle-child {
+        height: 100%;
+
+        [dir=ltr] & {
+            border-right: $border-width solid $border-color;
+        }
+
+        [dir=rtl] & {
+            border-left: $border-width solid $border-color;
+        }
+    }
+
+    .wt-chart-horizontal-last-child {
+        border-bottom: $border-width solid $border-color;
+        height: 50%;
+
+        [dir=ltr] & {
+            border-right: $border-width solid $border-color;
+            border-radius: 0 0 $border-radius 0;
+        }
+
+        [dir=rtl] & {
+            border-left: $border-width solid $border-color;
+            border-radius: 0 0 0 $border-radius;
+        }
+    }
+
+    .wt-chart-horizontal-first-parent {
+        border-top: $border-width solid $border-color;
+        height: 50%;
+        position: relative;
+        top: 50%;
+
+        [dir=ltr] & {
+            border-left: $border-width solid $border-color;
+            border-radius: $border-radius 0 0 0;
+        }
+
+        [dir=rtl] & {
+            border-right: $border-width solid $border-color;
+            border-radius: 0 $border-radius 0 0;
+        }
+    }
+
+    .wt-chart-horizontal-last-parent {
+        border-bottom: $border-width solid $border-color;
+        height: 50%;
+
+        [dir=ltr] & {
+            border-left: $border-width solid $border-color;
+            border-radius: 0 0 0 $border-radius;
+        }
+
+        [dir=rtl] & {
+            border-right: $border-width solid $border-color;
+            border-radius: 0 0 $border-radius 0;
+        }
     }
 }
 
@@ -1318,92 +1406,6 @@ table.tv_tree {
 
     .wt-chart-box-lifespan {
         display: none;
-    }
-
-    .wt-chart-horizontal-spacer {
-        width: 1rem;
-    }
-
-    .wt-chart-horizontal-line {
-        border-bottom: $border-width solid $border-color;
-        height: 50%;
-        width: 1rem;
-    }
-
-    .wt-chart-horizontal-first-child {
-        border-top: $border-width solid $border-color;
-        height: 50%;
-        position: relative;
-        top: 50%;
-
-        [dir=ltr] & {
-            border-right: $border-width solid $border-color;
-            border-radius: 0 $border-radius 0 0;
-        }
-
-        [dir=rtl] & {
-            border-left: $border-width solid $border-color;
-            border-radius: $border-radius 0 0 0;
-        }
-    }
-
-    .wt-chart-horizontal-middle-child {
-        height: 100%;
-
-        [dir=ltr] & {
-            border-right: $border-width solid $border-color;
-        }
-
-        [dir=rtl] & {
-            border-left: $border-width solid $border-color;
-        }
-    }
-
-    .wt-chart-horizontal-last-child {
-        border-bottom: $border-width solid $border-color;
-        height: 50%;
-
-        [dir=ltr] & {
-            border-right: $border-width solid $border-color;
-            border-radius: 0 0 $border-radius 0;
-        }
-
-        [dir=rtl] & {
-            border-left: $border-width solid $border-color;
-            border-radius: 0 0 0 $border-radius;
-        }
-    }
-
-    .wt-chart-horizontal-first-parent {
-        border-top: $border-width solid $border-color;
-        height: 50%;
-        position: relative;
-        top: 50%;
-
-        [dir=ltr] & {
-            border-left: $border-width solid $border-color;
-            border-radius: $border-radius 0 0 0;
-        }
-
-        [dir=rtl] & {
-            border-right: $border-width solid $border-color;
-            border-radius: 0 $border-radius 0 0;
-        }
-    }
-
-    .wt-chart-horizontal-last-parent {
-        border-bottom: $border-width solid $border-color;
-        height: 50%;
-
-        [dir=ltr] & {
-            border-left: $border-width solid $border-color;
-            border-radius: 0 0 0 $border-radius;
-        }
-
-        [dir=rtl] & {
-            border-right: $border-width solid $border-color;
-            border-radius: 0 0 $border-radius 0;
-        }
     }
 }
 
