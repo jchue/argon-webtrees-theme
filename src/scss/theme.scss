@@ -368,7 +368,7 @@ select {
 }
 
 #content {
-    padding-top: 3rem;
+    padding: 3rem 0;
 }
 
 #site-footer {
@@ -389,6 +389,10 @@ select {
         border-radius: 0;
         font-size: $font-size-sm;
     }
+}
+
+.tab-content {
+    padding-top: 0.5rem;
 }
 
 .d-flex.justify-content-between {
@@ -452,6 +456,15 @@ ul.pagination {
 
 .indent {
     padding-left: 1rem;
+}
+
+// Keyboard
+.wt-osk {
+    box-shadow: $box-shadow;
+    display: none;
+    position: fixed;
+    top: 1rem;
+    z-index: 1000;
 }
 
 /* Maps (Pedigree Page, Place Hierarchy Page, Place Hierarhy Tab) */
@@ -1643,7 +1656,7 @@ table.tv_tree {
 /* Place Hierarchy */
 
 #place-hierarchy {
-    ul {
+    ul.list_value_wrap {
         font-size: $font-size-sm;
     }
 }

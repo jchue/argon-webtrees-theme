@@ -69,12 +69,12 @@ return new class extends MinimalTheme implements ModuleCustomInterface {
         View::registerCustomView('::modules/place-hierarchy/map', $this->name() . '::modules/place-hierarchy/map'); // Remove padding in sidebar
         View::registerCustomView('::modules/place-hierarchy/sidebar', $this->name() . '::modules/place-hierarchy/sidebar'); // Remove padding in sidebar
         View::registerCustomView('::modules/place-hierarchy/popup', $this->name() . '::modules/place-hierarchy/popup'); // Make table small and add remove padding-zero class in map marker popup
-        View::registerCustomView('::modules/place-hierarchy/events', $this->name() . '::modules/place-hierarchy/events'); // Change tabs to nav pills and add bottom margin
         View::registerCustomView('::modules/place-hierarchy/list', $this->name() . '::modules/place-hierarchy/list'); // Make list header a heading
         View::registerCustomView('::lists/repositories-table', $this->name() . '::lists/repositories-table'); // Remove small and bordered classes from table
         View::registerCustomView('::lists/notes-table', $this->name() . '::lists/notes-table'); // Remove small and bordered classes from table
         View::registerCustomView('::lists/sources-table', $this->name() . '::lists/sources-table'); // Remove small class from table
 
+        // Calendar
         View::registerCustomView('::calendar-page', $this->name() . '::calendar-page'); // Add margins and padding to table options
         View::registerCustomView('::calendar-list', $this->name() . '::calendar-list'); // Change first row to thead/th, add table class for padding, and add table border class
     }
