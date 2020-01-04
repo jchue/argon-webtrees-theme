@@ -450,6 +450,10 @@ ul.pagination {
     font-weight: $font-weight-bold;
 }
 
+.indent {
+    padding-left: 1rem;
+}
+
 /* Maps (Pedigree Page, Place Hierarchy Page, Place Hierarhy Tab) */
 
 .osm-wrapper,
@@ -1641,5 +1645,29 @@ table.tv_tree {
 #place-hierarchy {
     ul {
         font-size: $font-size-sm;
+    }
+}
+
+/* Calendar */
+
+.wt-route-calendar {
+    // Weekday labels
+    .wt-page-options-label {
+        padding-top: 0.625rem;
+        padding-bottom: 0.625rem;
+    }
+
+    // Calendar days
+    .wt-page-options-value > div {
+        height: 6.25rem !important;
+    }
+
+    // Calendar days
+    .wt-page-options-value > ul {
+        margin-bottom: 0;
+
+        li:not(:last-child) {
+            margin-bottom: 1rem;
+        }
     }
 }

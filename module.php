@@ -74,6 +74,9 @@ return new class extends MinimalTheme implements ModuleCustomInterface {
         View::registerCustomView('::lists/repositories-table', $this->name() . '::lists/repositories-table'); // Remove small and bordered classes from table
         View::registerCustomView('::lists/notes-table', $this->name() . '::lists/notes-table'); // Remove small and bordered classes from table
         View::registerCustomView('::lists/sources-table', $this->name() . '::lists/sources-table'); // Remove small class from table
+
+        View::registerCustomView('::calendar-page', $this->name() . '::calendar-page'); // Add margins and padding to table options
+        View::registerCustomView('::calendar-list', $this->name() . '::calendar-list'); // Change first row to thead/th, add table class for padding, and add table border class
     }
 
     /**
