@@ -71,6 +71,7 @@ return new class extends MinimalTheme implements ModuleCustomInterface {
         View::registerCustomView('::modules/place-hierarchy/popup', $this->name() . '::modules/place-hierarchy/popup'); // Make table small and add remove padding-zero class in map marker popup
         View::registerCustomView('::modules/place-hierarchy/events', $this->name() . '::modules/place-hierarchy/events'); // Change tabs to nav pills and add bottom margin
         View::registerCustomView('::modules/place-hierarchy/list', $this->name() . '::modules/place-hierarchy/list'); // Make list header a heading
+        View::registerCustomView('::lists/repositories-table', $this->name() . '::lists/repositories-table'); // Remove small and bordered classes from table
     }
 
     /**
