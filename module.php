@@ -52,6 +52,7 @@ return new class extends MinimalTheme implements ModuleCustomInterface {
         View::registerCustomView('::modules/relatives/family', $this->name() . '::modules/relatives/family'); // Remove border- and padding- zero classes, make table normal-sized
         View::registerCustomView('::modules/interactive-tree/chart', $this->name() . '::modules/interactive-tree/chart'); // Add button class
         View::registerCustomView('::modules/stories/tab', $this->name() . '::modules/stories/tab'); // Add container for story
+        View::registerCustomView('::modules/places/tab', $this->name() . '::modules/places/tab'); // Remove padding in sidebar
         View::registerCustomView('::modules/descendancy/sidebar', $this->name() . '::modules/descendancy/sidebar'); // Add Bootstrap form classes
 
         // Charts
@@ -65,6 +66,11 @@ return new class extends MinimalTheme implements ModuleCustomInterface {
 
         // Lists
         View::registerCustomView('::lists/surnames-table', $this->name() . '::lists/surnames-table'); // Remove small and bordered classes from table
+        View::registerCustomView('::modules/place-hierarchy/map', $this->name() . '::modules/place-hierarchy/map'); // Remove padding in sidebar
+        View::registerCustomView('::modules/place-hierarchy/sidebar', $this->name() . '::modules/place-hierarchy/sidebar'); // Remove padding in sidebar
+        View::registerCustomView('::modules/place-hierarchy/popup', $this->name() . '::modules/place-hierarchy/popup'); // Make table small and add remove padding-zero class in map marker popup
+        View::registerCustomView('::modules/place-hierarchy/events', $this->name() . '::modules/place-hierarchy/events'); // Change tabs to nav pills and add bottom margin
+        View::registerCustomView('::modules/place-hierarchy/list', $this->name() . '::modules/place-hierarchy/list'); // Make list header a heading
     }
 
     /**
