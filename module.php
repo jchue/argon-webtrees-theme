@@ -48,7 +48,7 @@ return new class extends MinimalTheme implements ModuleCustomInterface {
         View::registerCustomView('::modules/recent_changes/changes-list', $this->name() . '::modules/recent_changes/changes-list'); // Restructure changes list
 
         // Individual Page
-        View::registerCustomView('::individual-page', $this->name() . '::individual-page'); // Add class to header section
+        View::registerCustomView('::individual-page', $this->name() . '::individual-page'); // Add class to header section, center thumbnail
         View::registerCustomView('::modules/relatives/family', $this->name() . '::modules/relatives/family'); // Remove border- and padding- zero classes, make table normal-sized
         View::registerCustomView('::modules/interactive-tree/chart', $this->name() . '::modules/interactive-tree/chart'); // Add button class
         View::registerCustomView('::modules/stories/tab', $this->name() . '::modules/stories/tab'); // Add container for story

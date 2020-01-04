@@ -57,7 +57,7 @@ use Illuminate\Support\Collection;
             <?php if ($individual_media->isNotEmpty() || $tree->getPreference('USE_SILHOUETTE') === '1') : ?>
                 <div class="col-sm-3">
                     <?php if ($individual_media->isEmpty()) : ?>
-                        <div class="img-thumbnail">
+                        <div class="img-thumbnail text-center">
                             <i class="wt-individual-silhouette wt-individual-silhouette-<?= strtolower($individual->sex()) ?>"></i>
                         </div>
                     <?php elseif ($individual_media->count() === 1) : ?>
