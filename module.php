@@ -48,6 +48,7 @@ return new class extends MinimalTheme implements ModuleCustomInterface {
         View::registerCustomView('::modules/relatives/family', $this->name() . '::modules/relatives/family'); // Remove border- and padding- zero classes, make table normal-sized
         View::registerCustomView('::modules/interactive-tree/chart', $this->name() . '::modules/interactive-tree/chart'); // Add button class
         View::registerCustomView('::modules/stories/tab', $this->name() . '::modules/stories/tab'); // Add container for story
+        View::registerCustomView('::modules/lightbox/tab', $this->name() . '::modules/lightbox/tab'); // Add Bootstrap grid classes for proper sizing, reduce maximum number of items per row to four by increasing column width
         View::registerCustomView('::modules/places/tab', $this->name() . '::modules/places/tab'); // Remove padding in sidebar
         View::registerCustomView('::modules/descendancy/sidebar', $this->name() . '::modules/descendancy/sidebar'); // Add Bootstrap form classes
 
