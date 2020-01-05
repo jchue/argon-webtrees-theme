@@ -1,13 +1,7 @@
 <?php
-
-/**
- * Example theme.  Here we are extending an existing theme.
- * Instead, you could extend AbstractModule and implement ModuleThemeInterface directly.
- */
-
 declare(strict_types=1);
 
-namespace MyCustomNamespace;
+namespace JChue\WebtreesThemes\Argon;
 
 use Fisharebest\Webtrees\Module\MinimalTheme;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
@@ -33,7 +27,9 @@ return new class extends MinimalTheme implements ModuleCustomInterface {
         // Register a namespace for our views.
         View::registerNamespace($this->name(), $this->resourcesFolder() . 'views/');
 
-        // Replace an existing view with our own version.
+        // Replace an existing views with our own versions.
+
+        // Site Layout
         View::registerCustomView('::layouts/default', $this->name() . '::layouts/default');
 
         // Site Footer
