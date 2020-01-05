@@ -1128,15 +1128,15 @@ table.tv_tree {
         display: block;
     }
 
-    select {
+    select#to {
         margin-right: 2%;
         width: 83%;
     }
 
-    button {
-        margin: 0;
-        padding-right: 0;
-        padding-left: 0;
+    select#to + button {
+        margin: 0 !important;
+        padding-right: 0 !important;
+        padding-left: 0 !important;
         width: 15%;
     }
 
