@@ -531,6 +531,11 @@ ul.pagination {
  * Webtrees
  */
 
+// Hide source details in facts by efault
+.source_citations {
+    display: none;
+}
+
 /* Calendar Modals */
 
 div[id^=caldiv] {
