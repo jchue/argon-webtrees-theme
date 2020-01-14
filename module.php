@@ -20,6 +20,34 @@ return new class extends MinimalTheme implements ModuleCustomInterface {
     }
 
     /**
+     * Misecellaneous dimensions, fonts, styles, etc.
+     *
+     * @param string $parameter_name
+     *
+     * @return string|int|float
+     */
+    public function parameter($parameter_name)
+    {
+        $parameters = [
+            'chart-background-f'             => 'fff4f9',
+            'chart-background-m'             => 'f4fdff',
+            'chart-background-u'             => 'f4f5f7',
+            'chart-box-x'                    => 260,
+            'chart-box-y'                    => 85,
+            'chart-font-color'               => '000000',
+            'chart-spacing-x'                => 5,
+            'chart-spacing-y'                => 10,
+            'compact-chart-box-x'            => 240,
+            'compact-chart-box-y'            => 50,
+            'distribution-chart-high-values' => '84beff',
+            'distribution-chart-low-values'  => 'c3dfff',
+            'distribution-chart-no-values'   => 'ffffff',
+        ];
+
+        return $parameters[$parameter_name];
+    }
+
+    /**
      * Bootstrap the module
      */
     public function boot(): void

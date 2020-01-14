@@ -5,8 +5,8 @@ $card-spacer-x: 1rem;
 $table-cell-padding: 1rem;
 $table-cell-padding-sm: 0.75rem;
 
-$m-color: #f4fdff;
 $f-color: #fff4f9;
+$m-color: #f4fdff;
 $u-color: #fff;
 
 $box-shadow-xs: 0 1px 3px rgba(50,50,93,.15), 0 1px 0 rgba(0,0,0,.02);
@@ -1486,6 +1486,12 @@ table.tv_tree {
     .wt-family-break {
         page-break-before: always;
     }
+}
+
+/* Fan Chart */
+
+.fan_chart_menu {
+    @extend .dropdown-menu;
 }
 
 /* Hourglass Chart */
