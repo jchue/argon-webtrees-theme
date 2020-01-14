@@ -1380,8 +1380,9 @@ table.tv_tree {
     }
 }
 
-/* Descendants Chart */
+/* Ancestors and Descendants Charts */
 
+.wt-chart-ancestors,
 .wt-chart-descendants {
     .wt-chart-box {
         font-size: $font-size-sm;
@@ -1448,6 +1449,7 @@ table.tv_tree {
         }
     }
 
+    .wt-sosa-number,
     .wt-daboville-number {
         border: $border-width dotted $border-color;
         font-size: $font-size-sm;
