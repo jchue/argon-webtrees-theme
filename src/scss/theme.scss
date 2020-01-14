@@ -1472,6 +1472,22 @@ table.tv_tree {
     }
 }
 
+/* Family Book Chart */
+
+.wt-chart-family-book {
+    .wt-chart-box {
+        width: 15rem;
+    }
+
+    .wt-chart-box-lifespan {
+        display: none;
+    }
+
+    .wt-family-break {
+        page-break-before: always;
+    }
+}
+
 /* Hourglass Chart */
 
 .wt-chart-hourglass {
