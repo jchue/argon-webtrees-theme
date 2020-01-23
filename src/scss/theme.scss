@@ -279,7 +279,7 @@ select {
 }
 
 .icon-edit_indi {
-    content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAABwklEQVR4AWMgBuzetYsRRK84eEuMoffLl+uP/ukzkAqWrVhzvmnF4/8tk69eevLokyrRGpcvXXb21Inj/zesWfmHgaHwPwND6w+iNK5YtvzosWPH/m/buu0vkPs/PCzoxd2793UJaly5fMWeI4cP/wf6G6wRiL9dunRRlqDGVStXbjp08OD/ffv2/QNpFObm/QOklRlAnP//mXBqXL1q1cr9+/b9B2r+J87N/5+Plf2/ioKiNkju6tWrjDg1bly1ZP7ePXv+Hzt69J+qvOJ/DgYGkEZjqDRuja1b7k/et3PT/xPHj/831NH9D3KhqqKyDUGNsfv+FxnM//t/ztKT/wM9zcEaleVlXeEa8YG6hZcv50x4+t/Wex1Qo/t/LgaGAJB4aslU/Bpv3LhcMmty+38/30qgxlQgtosiKhGcuvvfuaTxwNcIf63/DDLJExQ9VoqAxIvn/MRrI1hS0+v0i+vbfgsxOIrMU1aSOi4jysopKfCHQ4L/N4OkMAODlBADo5Qwwy8JQYb7LMwMD4Da3osLcHwER3Rnllgjg5HsQiZBxfP///1V/Pv7u+S/v78FgFIwLAiluYCY5R8wgfz9958ZAG/xwTfreFOxAAAAAElFTkSuQmCC");
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' width='13.125' height='15'%3E%3Cpath fill='%23212529' d='M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z'%3E%3C/path%3E%3C/svg%3E");
 }
 
 // Silhouettes in chart boxes
@@ -469,6 +469,10 @@ select {
 
 .dropdown-menu {
   z-index: 2000;
+}
+
+.modal {
+  z-index: 1052;
 }
 
 .modal-header {
