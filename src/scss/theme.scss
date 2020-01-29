@@ -540,6 +540,11 @@ ul.pagination {
     display: none;
 }
 
+// Preferred name
+.starredname {
+  text-decoration: underline;
+}
+
 /* Calendar Modals */
 
 div[id^=caldiv] {
