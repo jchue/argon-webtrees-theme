@@ -433,9 +433,10 @@ select {
 
         .wt-primary-navigation {
             flex-basis: content;
+            flex-grow: 1;
 
             ul.wt-genealogy-menu {
-                justify-content: right;
+                justify-content: flex-end;
 
                 & > li {
                     & > a {

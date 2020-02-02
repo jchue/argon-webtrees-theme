@@ -12,7 +12,6 @@ use Illuminate\Support\Collection;
 /**
  * @var Individual $individual
  * @var string     $user_link
- * @var int        $count_names
  * @var Collection $sidebars
  * @var Collection $individual_media
  * @var Collection $name_records
@@ -46,7 +45,7 @@ use Illuminate\Support\Collection;
         <?= $individual->fullName() ?><?= $user_link ?>, <?= $individual->lifespan() ?> <?= $age ?>
     </h2>
     <?php if ($individual->canEdit()) : ?>
-        <?= view('individual-page-menu', ['individual' => $individual, 'count_names' => $count_names, 'count_sex' => $count_sex, 'tree' => $tree]) ?>
+        <?= view('individual-page-menu', ['individual' => $individual, 'tree' => $tree]) ?>
     <?php endif ?>
 </div>
 
@@ -105,15 +104,16 @@ use Illuminate\Support\Collection;
         </div>
 
         <div class="wt-tabs-individual" id="individual-tabs">
-            <ul class="nav nav-pills flex-wrap">
+            <ul class="nav nav-pills flex-wrap" role="tablist">
                 <?php foreach ($tabs as $tab) : ?>
-                    <li class="nav-item">
+                    <li class="nav-item" role="presentation">
                         <a class="nav-link<?= $tab->isGrayedOut($individual) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" data-href="<?= e(route('module', ['module' => $tab->name(), 'action' => 'Tab', 'tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>" href="#<?= $tab->name() ?>">
                             <?= $tab->tabTitle() ?>
                         </a>
                     </li>
                 <?php endforeach ?>
             </ul>
+
             <div class="tab-content">
                 <?php foreach ($tabs as $tab) : ?>
                     <div id="<?= $tab->name() ?>" class="tab-pane fade wt-ajax-load" role="tabpanel"><?php if (!$tab->canLoadAjax()) :
@@ -134,6 +134,7 @@ use Illuminate\Support\Collection;
                         </a>
                     </div>
                 </div>
+
                 <div id="sidebar-content-<?= $sidebar->name() ?>" class="collapse<?= $sidebar->name() === 'family_nav' ? ' show' : '' ?>" role="tabpanel" aria-labelledby="sidebar-header-<?= $sidebar->name() ?>">
                     <div class="card-body">
                         <?= $sidebar->getSidebarContent($individual) ?></div>

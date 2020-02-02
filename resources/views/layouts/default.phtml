@@ -77,7 +77,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
         <?= DebugBar::renderHead() ?>
     </head>
 
-    <body class="wt-global wt-theme-<?= e(app(ModuleThemeInterface::class)->name()) ?> wt-route-<?= e(app(ServerRequestInterface::class)->getAttribute('route')) ?>">
+    <body class="wt-global wt-theme-<?= e(app(ModuleThemeInterface::class)->name()) ?> wt-route-<?= e(app(ServerRequestInterface::class)->getAttribute('route')->name) ?>">
         <header class="wt-header-wrapper d-print-none">
             <div id="secondary-header">
                 <div class="container wt-header-container">
@@ -92,7 +92,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
                         <div class="col col-md-auto wt-secondary-navigation">
                             <ul class="nav wt-user-menu">
                                 <?php foreach (app(ModuleThemeInterface::class)->userMenu($tree) as $menu) : ?>
-                                    <?= $menu->bootstrap4() ?>
+                                    <?= view('components/menu-item', ['menu' => $menu]) ?>
                                 <?php endforeach ?>
                             </ul>
                         </div>
@@ -120,14 +120,14 @@ use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
                 <div class="container wt-header-container">
                     <div class="row wt-header-content">
                         <?php if ($tree !== null) : ?>
-                            <h1 class="col wt-site-title"><a href="<?= e(route(TreePage::class, ['tree' => $tree->name()])) ?>"><?= e($tree->title()) ?></a></h1>
+                            <h1 class="wt-site-title"><a href="<?= e(route(TreePage::class, ['tree' => $tree->name()])) ?>"><?= e($tree->title()) ?></a></h1>
                         <?php endif ?>
 
                         <?php if ($tree !== null) : ?>
-                            <nav class="col wt-primary-navigation">
+                            <nav class="wt-primary-navigation">
                                 <ul class="nav wt-genealogy-menu">
                                     <?php foreach (app(ModuleThemeInterface::class)->genealogyMenu($tree) as $menu) : ?>
-                                        <?= $menu->bootstrap4() ?>
+                                        <?= view('components/menu-item', ['menu' => $menu]) ?>
                                     <?php endforeach ?>
                                 </ul>
                             </nav>

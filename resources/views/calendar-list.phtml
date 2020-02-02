@@ -23,11 +23,11 @@ use Fisharebest\Webtrees\Individual;
 
     <tbody>
         <tr>
-            <td class="wt-page-options-value">
+            <td class="wt-page-options-value align-top">
                 <ul class="list-unstyled">
                     <?php foreach ($individuals as $xref => $facts) : ?>
                         <li>
-                            <a href="<?= e(Individual::getInstance($xref, $tree)->url()) ?>">
+                            <a href="<?= e(Individual::getInstance((string) $xref, $tree)->url()) ?>">
                                 <?= Individual::getInstance($xref, $tree)->fullName() ?>
                             </a>
 
@@ -36,11 +36,11 @@ use Fisharebest\Webtrees\Individual;
                     <?php endforeach ?>
                 </ul>
             </td>
-            <td class="wt-page-options-value">
+            <td class="wt-page-options-value align-top">
                 <ul class="list-unstyled">
                     <?php foreach ($families as $xref => $facts) : ?>
                         <li>
-                            <a href="<?= e(Family::getInstance($xref, $tree)->url()) ?>">
+                            <a href="<?= e(Family::getInstance((string) $xref, $tree)->url()) ?>">
                                 <?= Family::getInstance($xref, $tree)->fullName() ?>
                             </a>
 
