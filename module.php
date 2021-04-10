@@ -6,10 +6,13 @@ namespace JChue\WebtreesThemes\Argon;
 use Fisharebest\Webtrees\Module\MinimalTheme;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomTrait;
+use Fisharebest\Webtrees\Module\ModuleGlobalInterface;
+use Fisharebest\Webtrees\Module\ModuleGlobalTrait;
 use Fisharebest\Webtrees\View;
 
-return new class extends MinimalTheme implements ModuleCustomInterface {
+return new class extends MinimalTheme implements ModuleCustomInterface, ModuleGlobalInterface {
     use ModuleCustomTrait;
+    use ModuleGlobalTrait;
 
     /**
      * @return string
@@ -61,47 +64,46 @@ return new class extends MinimalTheme implements ModuleCustomInterface {
         View::registerCustomView('::layouts/default', $this->name() . '::layouts/default');
 
         // Site Footer
-        View::registerCustomView('::modules/powered-by-webtrees/footer', $this->name() . '::modules/powered-by-webtrees/footer'); // Remove text-center class
-        View::registerCustomView('::modules/contact-links/footer', $this->name() . '::modules/contact-links/footer'); // Remove text-center and padding classes
-        View::registerCustomView('::modules/hit-counter/footer', $this->name() . '::modules/hit-counter/footer'); // Remove text-center and padding classes
-        View::registerCustomView('::modules/privacy-policy/footer', $this->name() . '::modules/privacy-policy/footer'); // Remove text-center and padding classes
+        View::registerCustomView('::modules/contact-links/footer', $this->name() . '::modules/contact-links/footer'); // Remove padding class
+        View::registerCustomView('::modules/hit-counter/footer', $this->name() . '::modules/hit-counter/footer'); // Remove padding class
+        View::registerCustomView('::modules/privacy-policy/footer', $this->name() . '::modules/privacy-policy/footer'); // Remove padding class
 
         // Tree Page Blocks
         View::registerCustomView('::modules/block-template', $this->name() . '::modules/block-template'); // Remove card classes from block
-        View::registerCustomView('::modules/todo/research-tasks', $this->name() . '::modules/todo/research-tasks'); // Make table normal
-        View::registerCustomView('::modules/recent_changes/changes-list', $this->name() . '::modules/recent_changes/changes-list'); // Restructure changes list
+        View::registerCustomView('::modules/todo/research-tasks', $this->name() . '::modules/todo/research-tasks'); // Remove border class from table
+        View::registerCustomView('::modules/recent_changes/changes-list', $this->name() . '::modules/recent_changes/changes-list'); // Redesign recent changes list
 
         // Individual Page
-        View::registerCustomView('::individual-page', $this->name() . '::individual-page'); // Add class to header section, center thumbnail
-        View::registerCustomView('::modules/relatives/family', $this->name() . '::modules/relatives/family'); // Remove border- and padding- zero classes, make table normal-sized
-        View::registerCustomView('::modules/interactive-tree/chart', $this->name() . '::modules/interactive-tree/chart'); // Add button class
+        View::registerCustomView('::individual-page', $this->name() . '::individual-page'); // Center silhouettes, make "Add a media object" smaller, change tabs to pills
+        View::registerCustomView('::modules/relatives/family', $this->name() . '::modules/relatives/family'); // Fix spacing in Families tab
+        View::registerCustomView('::modules/interactive-tree/chart', $this->name() . '::modules/interactive-tree/chart'); // Make compact layout toggle a proper button
         View::registerCustomView('::modules/stories/tab', $this->name() . '::modules/stories/tab'); // Add container for story
-        View::registerCustomView('::modules/lightbox/tab', $this->name() . '::modules/lightbox/tab'); // Add Bootstrap grid classes for proper sizing, reduce maximum number of items per row to four by increasing column width
-        View::registerCustomView('::modules/places/tab', $this->name() . '::modules/places/tab'); // Remove padding in sidebar
-        View::registerCustomView('::modules/descendancy/sidebar', $this->name() . '::modules/descendancy/sidebar'); // Add Bootstrap form classes
+        View::registerCustomView('::modules/lightbox/tab', $this->name() . '::modules/lightbox/tab'); // Convert to grid
+        View::registerCustomView('::modules/places/tab', $this->name() . '::modules/places/tab'); // Adjust padding in event list
+        View::registerCustomView('::modules/descendancy/sidebar', $this->name() . '::modules/descendancy/sidebar'); // Style form field
 
         // Charts
-        View::registerCustomView('::chart-box', $this->name() . '::chart-box'); // Increase thumbnail margin, update pedigree icon
-        View::registerCustomView('::modules/lifespans-chart/chart', $this->name() . '::modules/lifespans-chart/chart'); // Adjust vertical positioning and set background based on gender class
-        View::registerCustomView('::modules/pedigree-map/chart', $this->name() . '::modules/pedigree-map/chart'); // Remove padding in sidebar
-        View::registerCustomView('::modules/statistics-chart/page', $this->name() . '::modules/statistics-chart/page'); // Change tabs to nav pills
+        View::registerCustomView('::chart-box', $this->name() . '::chart-box'); // Increase thumbnail margin, update pedigree icon, increase padding for individual's links
+        View::registerCustomView('::modules/lifespans-chart/chart', $this->name() . '::modules/lifespans-chart/chart'); // Adjust vertical positioning of lifespan rows and set background based on global gender class
+        View::registerCustomView('::modules/pedigree-map/chart', $this->name() . '::modules/pedigree-map/chart'); // Adjust padding in list
+        View::registerCustomView('::modules/statistics-chart/page', $this->name() . '::modules/statistics-chart/page'); // Change tabs to pills
 
         // FAQ Page
-        View::registerCustomView('::modules/faq/show', $this->name() . '::modules/faq/show'); // Adjust TOC and back-to-top anchor
+        View::registerCustomView('::modules/faq/show', $this->name() . '::modules/faq/show'); // Convert TOC from table to list, style questions, and adjust back-to-top anchor
 
         // Lists
         View::registerCustomView('::lists/surnames-table', $this->name() . '::lists/surnames-table'); // Remove small and bordered classes from table
-        View::registerCustomView('::modules/place-hierarchy/map', $this->name() . '::modules/place-hierarchy/map'); // Remove padding in sidebar
-        View::registerCustomView('::modules/place-hierarchy/sidebar', $this->name() . '::modules/place-hierarchy/sidebar'); // Remove padding in sidebar
-        View::registerCustomView('::modules/place-hierarchy/popup', $this->name() . '::modules/place-hierarchy/popup'); // Make table small and add remove padding-zero class in map marker popup
+        View::registerCustomView('::modules/place-hierarchy/map', $this->name() . '::modules/place-hierarchy/map'); // Remove padding separating map from location list
+        View::registerCustomView('::modules/place-hierarchy/sidebar', $this->name() . '::modules/place-hierarchy/sidebar'); // Adjust padding in list
+        View::registerCustomView('::modules/place-hierarchy/popup', $this->name() . '::modules/place-hierarchy/popup'); // Adjust table in map marker popup
         View::registerCustomView('::modules/place-hierarchy/list', $this->name() . '::modules/place-hierarchy/list'); // Make list header a heading
         View::registerCustomView('::lists/repositories-table', $this->name() . '::lists/repositories-table'); // Remove small and bordered classes from table
         View::registerCustomView('::lists/notes-table', $this->name() . '::lists/notes-table'); // Remove small and bordered classes from table
         View::registerCustomView('::lists/sources-table', $this->name() . '::lists/sources-table'); // Remove small class from table
 
         // Calendar
-        View::registerCustomView('::calendar-page', $this->name() . '::calendar-page'); // Add margins and padding to table options
-        View::registerCustomView('::calendar-list', $this->name() . '::calendar-list'); // Change first row to thead/th, add table class for padding, and add table border class
+        View::registerCustomView('::calendar-page', $this->name() . '::calendar-page'); // Adjust spacing of "view" options
+        View::registerCustomView('::calendar-list', $this->name() . '::calendar-list'); // Adjust table in event detail
     }
 
     /**
@@ -115,14 +117,12 @@ return new class extends MinimalTheme implements ModuleCustomInterface {
     }
 
     /**
-     * Add our own stylesheet to the existing stylesheets.
+     * Replace Minimal spreadsheet with Argon spreadsheet
      *
      * @return array
      */
     public function stylesheets(): array
     {
-        $stylesheets = parent::stylesheets();
-
         // NOTE - a future version of webtrees will allow the modules to be stored in a private folder.
         // Only files in the /public/ folder will be accessible via the webserver.
         // Since modules cannot copy their files to the /public/ folder, they need to provide them via a callback.
@@ -132,14 +132,15 @@ return new class extends MinimalTheme implements ModuleCustomInterface {
     }
 
     /**
-     * Add our own scripts.
+     * Raw content, to be added at the end of the <body> element.
+     * Typically, this will be <script> elements.
      *
-     * @return array
+     * @return string
      */
-    public function scripts(): array
+    public function bodyContent(): string
     {
-        $scripts[] = $this->assetUrl('js/script.js');
+        $bodyContent = '<script src="' . $this->assetUrl('js/script.js') .'"></script>';
 
-        return $scripts;
+        return $bodyContent;
     }
 };

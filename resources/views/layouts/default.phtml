@@ -12,8 +12,7 @@ use Fisharebest\Webtrees\View;
 use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ServerRequestInterface;
 
-use Fisharebest\Webtrees\Helpers\functions\route;
-use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
+use Fisharebest\Webtrees\Http\RequestHandlers\TreePage; // Used for getting tree URL
 
 /**
  * @var string $title
@@ -62,10 +61,9 @@ use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
 
         <link rel="manifest" href="<?= e(asset('site.webmanifest')) ?>">
 
+        <!-- Bootstrap imported into Argon spreadsheet, so no need to load it separately <link rel="stylesheet" href="<?= e(asset('css/vendor.min.css')) ?>"> -->
         <?php foreach (app(ModuleThemeInterface::class)->stylesheets() as $stylesheet) : ?>
-            <?php /* Remove Minimal styles */ if (!strpos($stylesheet, 'minimal')) : ?>
-                <link rel="stylesheet" href="<?= e($stylesheet) ?>">
-            <?php endif ?>
+            <link rel="stylesheet" href="<?= e($stylesheet) ?>">
         <?php endforeach ?>
 
         <?= View::stack('styles') ?>
@@ -206,9 +204,5 @@ use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
         })->implode('') ?>
 
         <?= DebugBar::render() ?>
-
-        <?php foreach (app(ModuleThemeInterface::class)->scripts() as $script) : ?>
-            <script src="<?= e($script) ?>"></script>
-        <?php endforeach ?>
     </body>
 </html>

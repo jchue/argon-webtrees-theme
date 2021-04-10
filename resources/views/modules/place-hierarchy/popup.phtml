@@ -1,35 +1,7 @@
 <?php
 
-use Fisharebest\Webtrees\Place;
-use Fisharebest\Webtrees\I18N;
+$view = view('::modules/place-hierarchy/popup', get_defined_vars());
+$view = preg_replace('/table-borderless/', 'table-borderless table-sm', $view); // Make table smaller
+$view = preg_replace('/p-0/', 'px-2 py-1', $view); // Increase padding
 
-/**
- * @var bool   $showlink
- * @var Place  $place
- * @var string $flag
- * @var string $latitude
- * @var string $longitude
- */
-?>
-<div dir="auto" class="label">
-    <?php if ($flag) : ?>
-        <img class="flag mx-1 mr-1" alt = "<?=strip_tags($place->placeName()) ?>" title = "<?=strip_tags($place->placeName()) ?>" src='<?= $flag ?>'>
-    <?php endif ?>
-    <?php if ($showlink) : ?>
-        <a href="<?= e($place->url()) ?>">
-            <?= $place->placeName() ?>
-        </a>
-    <?php else : ?>
-        <?= $place->placeName() ?>
-    <?php endif ?>
-    <table class="table table-borderless table-sm">
-        <tr>
-            <th scope="row"><?= I18N::translate('Latitude') ?></th>
-            <td class="align-digits"><?= $latitude ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= I18N::translate('Longitude') ?></th>
-            <td class="align-digits"><?= $longitude ?></td>
-        </tr>
-    </table>
-</div>
+echo $view;

@@ -1,3 +1,4 @@
-<div class="wt-footer wt-footer-contact">
-    <?= $contact_links ?>
-</div>
+<?php
+$view = view('::modules/contact-links/footer', get_defined_vars());
+$view = preg_replace('/py-2/', '', $view);
+echo $view;

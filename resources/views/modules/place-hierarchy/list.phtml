@@ -1,22 +1,8 @@
 <?php
 
-use Fisharebest\Webtrees\I18N;
+$view = view('::modules/place-hierarchy/list', get_defined_vars());
 
-?>
+$view = preg_replace('/<span class="col list_label mr-1">/', '<h5 class="col list_label text-center">', $view);
+$view = preg_replace('/<\/span>(\r\n|\r|\n)<\/div>/', '</h5></div>', $view);
 
-<div class="row">
-            <h5 class="col list_label text-center">
-                <?= I18N::translate('Place list') ?>
-            </h5>
-</div>
-<div class="row">
-    <?php foreach ($columns as $column) : ?>
-        <ul class="col list_value_wrap mr-1">
-            <?php foreach ($column as $item) : ?>
-                <li>
-                    <a href="<?= e($item->url()) ?>"><?= $item->fullName() ?></a>
-                </li>
-            <?php endforeach ?>
-        </ul>
-    <?php endforeach ?>
-</div>
+echo $view;

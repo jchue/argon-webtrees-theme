@@ -1,16 +1,6 @@
-<div class="wt-tab-album container px-0 py-4">
-    <div class="row">
-        <?php foreach ($media_list as $media) : ?>
-            <figure class="figure text-center col-sm-6 col-md-4 col-lg-3 col-xl-3 wt-album-tab-figure">
-                <?php foreach ($media->mediaFiles() as $media_file) : ?>
-                    <?= $media_file->displayImage(100, 100, 'contain', ['class' => 'img-thumbnail wt-album-tab-image']) ?>
-                <?php endforeach ?>
-                <figcaption class="figure-caption wt-album-tab-caption">
-                    <a href="<?= e($media->url()) ?>">
-                        <?= $media->fullName() ?>
-                    </a>
-                </figcaption>
-            </figure>
-        <?php endforeach ?>
-    </div>
-</div>
+<?php
+$view = view('::modules/lightbox/tab', get_defined_vars());
+$view = preg_replace('/<div class="wt-tab-album py-4">/', '<div class="wt-tab-album container px-0 py-4"><div class="row">', $view); // Add Bootstrap grid classes for proper sizing
+$view = preg_replace('/col-xl-2/', 'col-xl-3', $view); // Reduce maximum number of items per row to four by increasing column width
+$view .= '</div>';
+echo $view;

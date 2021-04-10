@@ -1,3 +1,6 @@
-<div class="wt-footer wt-footer-hit-counter">
-    <?= $hit_counter ?>
-</div>
+<?php
+
+$view = view('::modules/hit-counter/footer', get_defined_vars());
+$view = preg_replace('/py-2/', '', $view);
+
+echo $view;

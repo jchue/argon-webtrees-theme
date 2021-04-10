@@ -1,51 +1,6 @@
 <?php
 
-use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Place;
+$view = view('::modules/place-hierarchy/sidebar', get_defined_vars());
+$view = preg_replace('/gchart px-md-2/', 'gchart', $view); // Increase padding by removing small padding class
 
-/**
- * @var bool   $showlink
- * @var Place  $place
- * @var string $flag
- * @var int    $id
- * @var string $sidebar_class
- * @var array  $stats
- */
-?>
-
-<li class="gchart <?= $sidebar_class ?>" data-id="<?= $id ?>">
-    <div class="row label">
-        <div class="col" style="word-wrap: break-word">
-            <?php if ($showlink) : ?>
-                <a href="<?= e($place->url()) ?>">
-                    <?= $place->placeName() ?>
-                </a>
-            <?php else : ?>
-                <?= $place->placeName() ?>
-            <?php endif ?>
-        </div>
-
-        <?php if ($flag) : ?>
-            <div class="col-sm-3 align-digits">
-                <img class="flag" alt="<?= strip_tags($place->placeName()) ?>" title="<?= strip_tags($place->placeName()) ?>" src="<?= $flag ?>">
-            </div>
-        <?php endif ?>
-    </div>
-
-    <?php if ($sidebar_class === 'unmapped') : ?>
-        <div class="row">
-            <div class="col-sm-9"><i><?= I18N::translate('The location of this place is not known.') ?></i></div>
-            <div class="col-sm-3 align-digits"><?= view('icons/warning') ?></div>
-        </div>
-    <?php endif ?>
-
-    <div class="row">
-        <div class="col-sm-9"><?= I18N::translate('Individuals') ?></div>
-        <div class="col-sm-3 align-digits"><?= $stats['INDI'] ?></div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-9"><?= I18N::translate('Families') ?></div>
-        <div class="col-sm-3 align-digits"><?= $stats['FAM'] ?></div>
-    </div>
-</li>
+echo $view;

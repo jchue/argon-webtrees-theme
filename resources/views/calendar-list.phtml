@@ -1,54 +1,11 @@
 <?php
 
-use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
+$view = view('::calendar-list', get_defined_vars());
 
-?>
+$view = preg_replace('/table class="w-100"/', 'table class="table table-bordered w-100"', $view); // Add table class for padding and add table border class
+$view = preg_replace('/<tr>(\r\n|\r|\n|\s)+<td class="wt-page-options-label/', '<thead><tr><th class="wt-page-options-label', $view); // Change first row to thead and change first cell to th
+$view = preg_replace('/<\/td>(\r\n|\r|\n|\s)+<td class="wt-page-options-label/', '</th><th class="wt-page-options-label', $view); // Change subsequent cells in first row to th
+$view = preg_replace('/<\/td>(\r\n|\r|\n|\s)+<\/tr>(\r\n|\r|\n|\s)+<tr>(\r\n|\r|\n|\s)+<td class="wt-page-options-value/', '</th></tr></thead><tbody><tr><td class="wt-page-options-value', $view); // Close thead and open tbody before first value cell 
+$view = preg_replace('/<\/tr>(\r\n|\r|\n|\s)+<\/table>/', '</tr></tbody></table>', $view); // Close tbody before table end
 
-<table class="table table-bordered w-100" role="presentation">
-    <thead>
-        <tr>
-            <th class="wt-page-options-label text-center w-50">
-                <?= view('icons/individual') ?>
-                <?= I18N::plural('%s individual', '%s individuals', count($individuals), I18N::number(count($individuals))) ?>
-            </th>
-
-            <th class="wt-page-options-label text-center w-50">
-                <?= view('icons/family') ?>
-                <?= I18N::plural('%s family', '%s families', count($families), I18N::number(count($families))) ?>
-            </th>
-        </tr>
-    </thead>
-
-    <tbody>
-        <tr>
-            <td class="wt-page-options-value align-top">
-                <ul class="list-unstyled">
-                    <?php foreach ($individuals as $xref => $facts) : ?>
-                        <li>
-                            <a href="<?= e(Individual::getInstance((string) $xref, $tree)->url()) ?>">
-                                <?= Individual::getInstance($xref, $tree)->fullName() ?>
-                            </a>
-
-                            <div class="indent"><?= $facts ?></div>
-                        </li>
-                    <?php endforeach ?>
-                </ul>
-            </td>
-            <td class="wt-page-options-value align-top">
-                <ul class="list-unstyled">
-                    <?php foreach ($families as $xref => $facts) : ?>
-                        <li>
-                            <a href="<?= e(Family::getInstance((string) $xref, $tree)->url()) ?>">
-                                <?= Family::getInstance($xref, $tree)->fullName() ?>
-                            </a>
-
-                            <div class="indent"><?= $facts ?></div>
-                        </li>
-                    <?php endforeach ?>
-                </ul>
-            </td>
-        </tr>
-    </tbody>
-</table>
+echo $view;
