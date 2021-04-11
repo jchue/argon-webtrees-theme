@@ -5,6 +5,15 @@
  */
 
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Tree;
+
+/**
+ * @var bool            $is_admin
+ * @var Individual      $individual
+ * @var array<stdClass> $stories
+ * @var Tree            $tree
+ */
 
 ?>
 
@@ -19,7 +28,7 @@ use Fisharebest\Webtrees\I18N;
             </div>
             <?php if ($is_admin) : ?>
                 <footer class="story_edit text-right">
-                    <a href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'block_id' => $story->block_id, 'tree' => $tree->name()])) ?>" class="btn btn-link">
+                    <a href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'block_id' => $story->block_id, 'tree' => $tree->name(), 'url' => $individual->url()])) ?>" class="btn btn-link">
                         <?= view('icons/edit') ?>
                         <?= I18N::translate('Edit the story') ?>
                     </a>
@@ -30,7 +39,7 @@ use Fisharebest\Webtrees\I18N;
 
     <?php if ($is_admin && $stories === []) : ?>
         <div>
-            <a href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'xref' => $individual->xref(), 'tree' => $tree->name()])) ?>">
+            <a href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'xref' => $individual->xref(), 'tree' => $tree->name(), 'url' => $individual->url()])) ?>">
                 <?= I18N::translate('Add a story') ?>
             </a>
         </div>
