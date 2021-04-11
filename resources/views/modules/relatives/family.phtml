@@ -1,4 +1,6 @@
 <?php
+
 $view = view('::modules/relatives/family', get_defined_vars());
 $view = preg_replace(['/table-sm/','/ class="border-0 p-0"/'], '', $view); // Make table normal-sized, rmove border- and padding- zero classes
+
 echo $view;

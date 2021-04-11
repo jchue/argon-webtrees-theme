@@ -1,8 +1,9 @@
 <?php
+
 $view = view('::chart-box', get_defined_vars());
 
 $view = preg_replace('/wt-chart-box-thumbnail float-left mr-1/', 'wt-chart-box-thumbnail float-left mr-2', $view); // Increase thumbnail margin
 $view = preg_replace('/<i class="icon-pedigree".+?<\/i>/', view('icons/pedigree-right'), $view); // Replace icon for individual's links
-$view = preg_replace('/dropdown-item p-1/', 'dropdown-item', $view); // Increase padding by removing small padding class
+$view = preg_replace('/dropdown-item p-1/', 'dropdown-item', $view); // Increase padding around individual's links by removing small padding class
 
 echo $view;

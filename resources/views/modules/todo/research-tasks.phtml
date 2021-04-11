@@ -1,4 +1,6 @@
 <?php
+
 $view = view('::modules/todo/research-tasks', get_defined_vars());
-$view = preg_replace('/table-bordered/', '', $view);
+$view = preg_replace('/table-bordered/', '', $view); // Remove borders around table
+
 echo $view;

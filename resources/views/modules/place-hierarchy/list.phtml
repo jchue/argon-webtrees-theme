@@ -2,6 +2,7 @@
 
 $view = view('::modules/place-hierarchy/list', get_defined_vars());
 
+// Make list header a heading
 $view = preg_replace('/<span class="col list_label mr-1">/', '<h5 class="col list_label text-center">', $view);
 $view = preg_replace('/<\/span>(\r\n|\r|\n)<\/div>/', '</h5></div>', $view);
 

@@ -1,4 +1,6 @@
 <?php
+
 $view = view('::modules/block-template', get_defined_vars());
-$view = preg_replace(['/card/', '/card-header/', '/card-body/'], '', $view);
+$view = preg_replace(['/card/', '/card-header/', '/card-body/'], '', $view); // Remove borders around blocks
+
 echo $view;

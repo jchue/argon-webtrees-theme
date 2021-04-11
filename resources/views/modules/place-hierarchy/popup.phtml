@@ -1,7 +1,8 @@
 <?php
 
 $view = view('::modules/place-hierarchy/popup', get_defined_vars());
+
 $view = preg_replace('/table-borderless/', 'table-borderless table-sm', $view); // Make table smaller
-$view = preg_replace('/p-0/', 'px-2 py-1', $view); // Increase padding
+$view = preg_replace('/p-0/', 'px-2 py-1', $view); // Increase padding in table
 
 echo $view;

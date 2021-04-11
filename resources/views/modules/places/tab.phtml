@@ -1,5 +1,8 @@
 <?php
+
 $view = view('::modules/places/tab', get_defined_vars());
-$view = preg_replace('/osm-sidebar wt-page-options-value list-unstyled px-md-1/', 'osm-sidebar wt-page-options-value list-unstyled', $view); // Remove spacing outside horizontal separators
-$view = preg_replace('/gchart px-md-2/', 'gchart', $view); // Increase padding by removing small padding class
+
+$view = preg_replace('/osm-sidebar wt-page-options-value list-unstyled px-md-1/', 'osm-sidebar wt-page-options-value list-unstyled', $view); // Remove spacing outside horizontal separators in event list
+$view = preg_replace('/gchart px-md-2/', 'gchart', $view); // Increase padding around events by removing small padding class
+
 echo $view;

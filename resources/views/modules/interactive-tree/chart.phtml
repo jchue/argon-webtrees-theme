@@ -1,4 +1,6 @@
 <?php
+
 $view = view('::modules/interactive-tree/chart', get_defined_vars());
-$view = preg_replace('/tv_button/', 'btn btn-secondary tv_button', $view);
+$view = preg_replace('/tv_button/', 'btn btn-secondary tv_button', $view); // Make compact layout toggle a proper button
+
 echo $view;

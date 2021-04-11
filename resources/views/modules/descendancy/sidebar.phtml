@@ -1,7 +1,8 @@
 <?php
+
 $view = view('::modules/descendancy/sidebar', get_defined_vars());
 
-// Add Bootstrap form classes
+// Add Bootstrap form classes to style input field
 $view = preg_replace('/<input type="search"/', '<div class="form-group"><input type="search"', $view);
 $view = preg_replace('/id="sb_desc_name"/', 'id="sb_desc_name" class="form-control"', $view);
 $view = preg_replace('/<\/form>/', '</div></form>', $view);

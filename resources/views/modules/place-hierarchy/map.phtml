@@ -1,6 +1,6 @@
 <?php
 
 $view = view('::modules/place-hierarchy/map', get_defined_vars());
-$view = preg_replace('/list-unstyled px-md-1/', 'list-unstyled', $view);
+$view = preg_replace('/list-unstyled px-md-1/', 'list-unstyled', $view); // Remove padding separating map from location list
 
 echo $view;

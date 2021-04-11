@@ -1,6 +1,9 @@
 <?php
+
 $view = view('::modules/lightbox/tab', get_defined_vars());
+
 $view = preg_replace('/<div class="wt-tab-album py-4">/', '<div class="wt-tab-album container px-0 py-4"><div class="row">', $view); // Add Bootstrap grid classes for proper sizing
 $view = preg_replace('/col-xl-2/', 'col-xl-3', $view); // Reduce maximum number of items per row to four by increasing column width
 $view .= '</div>';
+
 echo $view;
