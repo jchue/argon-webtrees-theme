@@ -1248,6 +1248,11 @@ table.tv_tree {
 * Charts
 */
 
+.wt-chart {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
 // Also includes Family page (since it utilizes many of the same components but lacks a chart wrapper class)
 .wt-chart,
 .wt-family-members {
