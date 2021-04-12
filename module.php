@@ -71,7 +71,7 @@ return new class extends MinimalTheme implements ModuleCustomInterface, ModuleGl
         /**
          * Tree Page Blocks
          */
-        View::registerCustomView('::modules/block-template', $this->name() . '::modules/block-template'); // Tree home / My page > blocks
+        View::registerCustomView('::modules/gedcom_stats/statistics', $this->name() . '::modules/gedcom_stats/statistics'); // Blocks > Statistics
         View::registerCustomView('::modules/todo/research-tasks', $this->name() . '::modules/todo/research-tasks'); // Blocks > Research tasks
         View::registerCustomView('::modules/recent_changes/changes-list', $this->name() . '::modules/recent_changes/changes-list'); // Blocks > Recent changes
 

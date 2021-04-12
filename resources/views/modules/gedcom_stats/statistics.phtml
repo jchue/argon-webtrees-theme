@@ -1,0 +1,6 @@
+<?php
+
+$view = view('::modules/gedcom_stats/statistics', get_defined_vars());
+$view = preg_replace('/table wt-facts-table/', 'table table-sm wt-facts-table', $view); // Make table small
+
+echo $view;
