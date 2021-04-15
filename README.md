@@ -1,4 +1,4 @@
-![Latest Release](https://img.shields.io/badge/release-v0.14.1-blue)
+![Latest Release](https://img.shields.io/badge/release-v0.14.2-blue)
 
 # Argon Theme for webtrees
 
