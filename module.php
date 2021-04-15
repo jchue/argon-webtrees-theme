@@ -103,10 +103,12 @@ return new class extends MinimalTheme implements ModuleCustomInterface, ModuleGl
          * Lists
          */
         View::registerCustomView('::lists/surnames-table', $this->name() . '::lists/surnames-table'); // Lists > Families AND Lists > Individuals
-        View::registerCustomView('::modules/place-hierarchy/map', $this->name() . '::modules/place-hierarchy/map'); // Lists > Place hierarchy
-        View::registerCustomView('::modules/place-hierarchy/sidebar', $this->name() . '::modules/place-hierarchy/sidebar'); // Lists > Place hierarchy > location entries
-        View::registerCustomView('::modules/place-hierarchy/popup', $this->name() . '::modules/place-hierarchy/popup'); // Lists > Place hierarchy >  map pin popup
-        View::registerCustomView('::modules/place-hierarchy/list', $this->name() . '::modules/place-hierarchy/list'); // Lists > Place hierarchy > Show all places in a list
+        View::registerCustomView('::modules/place-hierarchy/page', $this->name() . '::modules/place-hierarchy/page'); // Lists > Place hierarchy page
+        View::registerCustomView('::place-hierarchy', $this->name() . '::place-hierarchy'); // Lists > Place hierarchy page > Place hierarchy
+        View::registerCustomView('::modules/place-hierarchy/map', $this->name() . '::modules/place-hierarchy/map'); // Lists > Place hierarchy page > map
+        View::registerCustomView('::modules/place-hierarchy/sidebar', $this->name() . '::modules/place-hierarchy/sidebar'); // Lists > Place hierarchy page > location entries
+        View::registerCustomView('::modules/place-hierarchy/popup', $this->name() . '::modules/place-hierarchy/popup'); // Lists > Place hierarchy page >  map pin popup
+        View::registerCustomView('::modules/place-hierarchy/list', $this->name() . '::modules/place-hierarchy/list'); // Lists > Place hierarchy page > Place list
         View::registerCustomView('::lists/repositories-table', $this->name() . '::lists/repositories-table'); // Lists > Repositories
         View::registerCustomView('::lists/notes-table', $this->name() . '::lists/notes-table'); // Lists > Shared notes
         View::registerCustomView('::lists/sources-table', $this->name() . '::lists/sources-table'); // Lists > Sources

@@ -1,0 +1,6 @@
+<?php
+
+$view = view('::modules/place-hierarchy/page', get_defined_vars());
+$view = preg_replace('/id="place-hierarchy"/', 'id="place-hierarchy" class="mb-4"', $view); // Add spacing at bottom of page
+
+echo $view;
