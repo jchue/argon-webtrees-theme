@@ -1,14 +1,17 @@
 <?php
 
-use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\Http\RequestHandlers\AppleTouchIconPng;
+use Fisharebest\Webtrees\Http\RequestHandlers\BrowserconfigXml;
 use Fisharebest\Webtrees\Http\RequestHandlers\SearchQuickAction;
+use Fisharebest\Webtrees\Http\RequestHandlers\WebmanifestJson;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleFooterInterface;
 use Fisharebest\Webtrees\Module\ModuleGlobalInterface;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Fisharebest\Webtrees\View;
 use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ServerRequestInterface;
@@ -41,20 +44,15 @@ use Fisharebest\Webtrees\Http\RequestHandlers\TreePage; // Used for getting tree
             <?php endif ?>
         </title>
 
+        <!--iOS-->
+        <link rel="apple-touch-icon" sizes="180x180" href="<?= e(route(AppleTouchIconPng::class)) ?>">
         <!--Generic favicons-->
         <link rel="icon" sizes="32x32" href="<?= e(asset('favicon-32.png')) ?>">
-        <link rel="icon" sizes="128x128" href="<?= e(asset('favicon-128.png')) ?>">
         <link rel="icon" sizes="192x192" href="<?= e(asset('favicon-192.png')) ?>">
-        <!--Android-->
-        <link rel="shortcut icon" sizes="196x196" href="<?= e(asset('favicon-196.png')) ?>">
-        <!--iPad-->
-        <link rel="apple-touch-icon" sizes="152x152" href="<?= e(asset('favicon-152.png')) ?>">
-        <!--iPhone-->
-        <link rel="apple-touch-icon" sizes="180x180" href="<?= e(asset('favicon-180.png')) ?>">
         <!--IE11/Edge-->
-        <meta name="msapplication-config" content="<?= e(asset('browserconfig.xml')) ?>">
+        <meta name="msapplication-config" content="<?= e(route(BrowserconfigXml::class)) ?>">
 
-        <link rel="manifest" href="<?= e(asset('site.webmanifest')) ?>">
+        <link rel="manifest" href="<?= e(route(WebmanifestJson::class)) ?>">
 
         <!-- Bootstrap imported into Argon spreadsheet, so no need to load it separately <link rel="stylesheet" href="<?= e(asset('css/vendor.min.css')) ?>"> -->
         <?php foreach (app(ModuleThemeInterface::class)->stylesheets() as $stylesheet) : ?>
@@ -66,61 +64,63 @@ use Fisharebest\Webtrees\Http\RequestHandlers\TreePage; // Used for getting tree
         <?= app(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static function (ModuleGlobalInterface $module): string {
             return $module->headContent();
         })->implode('') ?>
-
-        <?= DebugBar::renderHead() ?>
     </head>
 
-    <body class="wt-global wt-theme-<?= e(app(ModuleThemeInterface::class)->name()) ?> wt-route-<?= e(substr(strrchr($request->getAttribute('route')->name, '\\'),1)) ?>">
+    <body class="wt-global wt-theme-<?= e(app(ModuleThemeInterface::class)->name()) ?> wt-route-<?= e(substr(strrchr($route = Validator::attributes($request)->route()->name ?? 'no-route', '\\'),1)) ?>">
         <header class="wt-header-wrapper d-print-none">
             <div id="secondary-header">
-                <div class="container wt-header-container">
-                    <div class="row justify-content-center wt-header-content">
+                <div class="container-lg wt-header-container">
+                    <div class="row wt-header-content justify-content-center">
                         <div class="wt-accessibility-links position-fixed">
-                            <a class="sr-only sr-only-focusable btn btn-info btn-sm" href="#content">
+                            <a class="visually-hidden visually-hidden-focusable btn btn-info btn-sm" href="#content">
                                 <?= /* I18N: Skip over the headers and menus, to the main content of the page */
                                 I18N::translate('Skip to content') ?>
                             </a>
                         </div>
 
-                        <div class="col col-md-auto wt-secondary-navigation">
+                        <nav class="col col-md-auto wt-secondary-navigation">
                             <ul class="nav wt-user-menu">
                                 <?php foreach (app(ModuleThemeInterface::class)->userMenu($tree) as $menu) : ?>
                                     <?= view('components/menu-item', ['menu' => $menu]) ?>
                                 <?php endforeach ?>
                             </ul>
-                        </div>
+                        </nav>
 
                         <?php if ($tree !== null) : ?>
                             <div class="col col-md-auto wt-header-search">
                                 <form method="post"
-                                      action="<?= e(route(SearchQuickAction::class, ['tree' => $tree->name()])) ?>"
-                                      class="wt-header-search-form" role="search">
+                                        action="<?= e(route(SearchQuickAction::class, ['tree' => $tree->name()])) ?>"
+                                        class="wt-header-search-form" role="search">
                                     <?= csrf_field() ?>
-                                    <label class="sr-only" for="quick-search"><?= I18N::translate('Search') ?></label>
                                     <div class="input-group">
+                                        <label class="visually-hidden" for="quick-search"><?= I18N::translate('Search') ?></label>
                                         <input type="search" class="form-control wt-header-search-field" id="quick-search"
-                                              name="query" size="15" placeholder="<?= I18N::translate('Search') ?>">
-                                        <div class="input-group-append">
-                                            <button type="submit" class="btn btn-primary wt-header-search-button">
-                                                <?= view('icons/search') ?>
-                                            </button>
-                                        </div>
+                                                name="query" size="15" placeholder="<?= I18N::translate('Search') ?>">
+                                        <button type="submit" class="btn btn-primary wt-header-search-button" aria-label="<?= I18N::translate('Search') ?>">
+                                            <?= view('icons/search') ?>
+                                        </button>
                                     </div>
                                 </form>
                             </div>
                         <?php endif ?>
-                    </div><!-- .row -->
-                </div><!-- .container -->
-            </div><!-- #secondary-header -->
+                    </div><!-- /.row.wt-header-content -->
+                </div><!-- /.container-lg.wt-header-container -->
+            </div><!-- /#secondary-header -->
             <div id="primary-header">
-                <div class="container wt-header-container">
+                <div class="container-lg wt-header-container">
                     <div class="row wt-header-content">
+                        <div class="col wt-site-logo"></div>
+
                         <?php if ($tree !== null) : ?>
-                            <h1 class="wt-site-title"><a href="<?= e(route(TreePage::class, ['tree' => $tree->name()])) ?>"><?= e($tree->title()) ?></a></h1>
+                            <h1 class="col wt-site-title">
+                                <a href="<?= e(route(TreePage::class, ['tree' => $tree->name()])) ?>">
+                                    <?= e($tree->title()) ?>
+                                </a>
+                            </h1>
                         <?php endif ?>
 
                         <?php if ($tree !== null) : ?>
-                            <nav class="wt-primary-navigation">
+                            <nav class="col wt-primary-navigation">
                                 <ul class="nav wt-genealogy-menu">
                                     <?php foreach (app(ModuleThemeInterface::class)->genealogyMenu($tree) as $menu) : ?>
                                         <?= view('components/menu-item', ['menu' => $menu]) ?>
@@ -128,19 +128,17 @@ use Fisharebest\Webtrees\Http\RequestHandlers\TreePage; // Used for getting tree
                                 </ul>
                             </nav>
                         <?php endif ?>
-                    </div><!-- .row -->
-                </div><!-- .container -->
-            </div><!-- #primary-header -->
-        </header>
+                    </div><!-- /.row.wt-header-content -->
+                </div><!-- /.container-lg.wt-header-container -->
+            </div><!-- /#primary-header -->
+        </header><!-- /.wt-header-wrapper -->
 
         <main id="content" class="wt-main-wrapper">
-            <div class="container wt-main-container">
+            <div class="container-lg wt-main-container">
                 <div class="flash-messages">
                     <?php foreach (FlashMessages::getMessages() as $message) : ?>
                         <div class="alert alert-<?= e($message->status) ?> alert-dismissible" role="alert">
-                            <button type="button" class="close" data-dismiss="alert"
-                                    aria-label="<?= I18N::translate('close') ?>">
-                                <span aria-hidden="true">&times;</span>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="<?= I18N::translate('close') ?>">
                             </button>
                             <?= $message->text ?>
                         </div>
@@ -148,16 +146,16 @@ use Fisharebest\Webtrees\Http\RequestHandlers\TreePage; // Used for getting tree
                 </div>
 
                 <?= $content ?>
-            </div>
-        </main>
+            </div><!-- /.container-lg.wt-main-container -->
+        </main><!-- /#content.wt-main-wrapper -->
 
-        <footer class="wt-footers d-print-none" id="site-footer">
-            <div class="container">
+        <footer id="site-footer" class="wt-footers d-print-none">
+            <div class="container-lg">
                 <?= app(ModuleService::class)->findByInterface(ModuleFooterInterface::class)->map(static function (ModuleFooterInterface $module) use ($request): string {
                     return $module->getFooter($request);
                 })->implode('') ?>
-            </div>
-        </footer>
+            </div><!-- /.container-lg -->
+        </footer><!-- /#site-footer.wt-footers -->
 
         <script src="<?= e(asset('js/vendor.min.js')) ?>"></script>
         <script src="<?= e(asset('js/webtrees.min.js')) ?>"></script>
@@ -201,7 +199,5 @@ use Fisharebest\Webtrees\Http\RequestHandlers\TreePage; // Used for getting tree
         <?= app(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static function (ModuleGlobalInterface $module): string {
             return $module->bodyContent();
         })->implode('') ?>
-
-        <?= DebugBar::render() ?>
     </body>
 </html>

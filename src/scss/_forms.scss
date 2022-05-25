@@ -1,0 +1,62 @@
+/**
+ * Forms
+ */
+
+@each $color,
+$value in $theme-colors {
+  .btn-#{$color} {
+    &:hover {
+      background-color: lighten($value, 5%);
+    }
+  }
+}
+
+button[role=button] {
+  @extend .btn;
+}
+
+.btn-link {
+  margin: 0;
+  padding: 0 0.5rem;
+}
+
+input[type=text] {
+  @extend .form-control;
+}
+
+/* If button is part of group, group should handle margins */
+.input-group .btn {
+  margin-bottom: 0;
+}
+
+/* If preceeded by ARIA element, treat form control as first element in group */
+.input-group .visually-hidden +.form-control:not(:first-child),
+.input-group .visually-hidden + input[type="text"]:not(:first-child) {
+  padding-left: 0.75rem;
+}
+
+.input-group > .visually-hidden + :not(:first-child):not(.dropdown-menu):not(.fan_chart_menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+select {
+  @extend .form-select;
+}
+
+.form-label,
+label {
+  margin: 0 0 $form-label-margin-bottom 0;
+}
+
+/* Tom Select */
+
+.ts-control {
+  min-height: 2.25rem;
+}
+
+/* Images in items */
+.ts-control .gallery,
+.ts-dropdown .gallery {
+  margin-right: 0.5rem;
+}

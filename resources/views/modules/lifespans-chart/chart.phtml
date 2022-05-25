@@ -7,12 +7,12 @@
 use Fisharebest\Webtrees\Gedcom;
 
 /**
- * @var string          $dir
- * @var int             $end_year
- * @var array<stdClass> $lifespans
- * @var int             $max_rows
- * @var int             $start_year
- * @var string          $subtitle
+ * @var string        $dir
+ * @var int           $end_year
+ * @var array<object> $lifespans
+ * @var int           $max_rows
+ * @var int           $start_year
+ * @var string        $subtitle
  */
 
 ?>
@@ -29,14 +29,14 @@ use Fisharebest\Webtrees\Gedcom;
 
 <div class="wt-lifespans-individuals position-relative" style="height: <?= (5 + $max_rows) * 1.5 ?>rem; width: <?= ($end_year - $start_year) * 7 ?>px;">
     <?php foreach ($lifespans as $lifespan) : ?>
-    <a href="#" data-toggle="collapse" data-target="#<?= e($lifespan->id) ?>" aria-expanded="false" aria-controls="<?= e($lifespan->id) ?>">
-        <div class="wt-lifespans-individual position-absolute text-nowrap text-truncate <?= $lifespan->individual->sex() === 'M' ? 'wt-gender-M' : ($lifespan->individual->sex() === 'F' ? 'wt-gender-F' : 'wt-gender-U') ?>" dir="auto" style="<?= $dir === 'ltr' ? 'left' : 'right' ?>:<?= ($lifespan->birth_year - $start_year) * 7 ?>px; top:<?= $lifespan->row * 2.5 ?>rem; width:<?= ($lifespan->death_year - $lifespan->birth_year) * 7 + 5 ?>px;">
+    <a href="#" data-bs-toggle="collapse" data-bs-target="#<?= e($lifespan->id) ?>" aria-expanded="false" aria-controls="<?= e($lifespan->id) ?>">
+        <div class="wt-lifespans-individual position-absolute text-nowrap text-truncate <?= $lifespan->individual->sex() === 'M' ? 'wt-sex-m' : ($lifespan->individual->sex() === 'F' ? 'wt-sex-f' : 'wt-sex-u') ?>" dir="auto" style="<?= $dir === 'ltr' ? 'left' : 'right' ?>:<?= ($lifespan->birth_year - $start_year) * 7 ?>px; top:<?= $lifespan->row * 2.5 ?>rem; width:<?= ($lifespan->death_year - $lifespan->birth_year) * 7 + 5 ?>px;">
             <?= $lifespan->individual->fullName() ?>
             <?= strip_tags($lifespan->individual->lifespan()) ?>
         </div>
     </a>
 
-    <div class="wt-lifespans-summary collapse position-absolute" id="<?= e($lifespan->id) ?>" style="<?= $dir === 'ltr' ? 'left' : 'right' ?>:<?= (min($lifespan->birth_year, $end_year - 50) - $start_year) * 7 ?>px; top:<?= ($lifespan->row + 1.2) * 2.5 ?>rem; width:350px;">
+    <div class="wt-lifespans-summary collapse position-absolute" id="<?= e($lifespan->id) ?>" style="<?= $dir === 'ltr' ? 'left' : 'right' ?>:<?= (min($lifespan->birth_year, $end_year - 50) - $start_year) * 7 ?>px; top:<?= ($lifespan->row + 1) * 1.5 ?>rem; width:350px;">
         <a class="wt-lifespans-summary-link" href="<?= e($lifespan->individual->url()) ?>">
             <?= $lifespan->individual->fullName() ?>
         </a>

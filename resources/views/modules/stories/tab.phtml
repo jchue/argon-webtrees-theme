@@ -1,9 +1,5 @@
 <?php
 
-/**
- * Add a container for each story
- */
-
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
@@ -19,6 +15,11 @@ use Fisharebest\Webtrees\Tree;
 
 <div class="wt-tab-stories py-4">
     <?php foreach ($stories as $story) : ?>
+        <?
+        /**
+         * Add a container for each story
+         */
+        ?>
         <article class="story mb-4 pb-4">
             <header class="story_title descriptionbox text-center rela">
                 <h4><?= e($story->title) ?></h4>
@@ -37,7 +38,12 @@ use Fisharebest\Webtrees\Tree;
         </article>
     <?php endforeach ?>
 
-    <?php if ($is_admin && $stories === []) : ?>
+    <?
+    /**
+     * Display Add link even when there are existing stories
+     */
+    ?>
+    <?php if ($is_admin) : ?>
         <div>
             <a href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'xref' => $individual->xref(), 'tree' => $tree->name(), 'url' => $individual->url()])) ?>">
                 <?= I18N::translate('Add a story') ?>

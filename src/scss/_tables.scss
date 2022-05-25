@@ -1,0 +1,168 @@
+/**
+ * Tables
+ */
+
+table,
+.table {
+
+  td,
+  th,
+  thead th,
+  tbody th,
+  tbody td {
+    border: none;
+    font-size: $font-size-sm;
+    white-space: normal;
+    /* Overwrite argon no-wrap */
+  }
+
+  th {
+    background-color: $gray-100;
+  }
+
+  thead th {
+    @extend .text-uppercase, .text-secondary, .text-xxs, .font-weight-bolder, .opacity-7;
+    border-top: $table-border-width solid $table-border-color;
+  }
+
+  & > :not(:first-child) {
+    border-top: none; /* Override dark border above tbody */
+  }
+
+  td,
+  tbody th,
+  tbody td {
+    border-bottom: $table-border-width solid $table-border-color;
+  }
+
+  tbody tr:first-child {
+
+    th,
+    td {
+      border-top: $table-border-width solid $table-border-color;
+    }
+  }
+
+  tbody tr:last-child {
+    th,
+    td {
+      border-width: 1px; /* Override missing bottom border */
+    }
+  }
+
+  p {
+    font-size: $font-size-sm;
+  }
+}
+
+.table-sm {
+
+  td,
+  th,
+  thead th,
+  tbody th,
+  tbody td {
+    font-size: $font-size-xs;
+    padding: $table-cell-padding-y-sm $table-cell-padding-x-sm;
+  }
+
+  p {
+    font-size: $font-size-xs;
+  }
+}
+
+.table-bordered {
+
+  td,
+  th,
+  thead th,
+  tbody th,
+  tbody td {
+    border: $table-border-width solid $table-border-color;
+  }
+}
+
+.sorting,
+.sorting_asc,
+.sorting_desc {
+  background-clip: padding-box;
+  cursor: pointer;
+  position: relative;
+
+  &::before,
+  &::after {
+    bottom: 1rem;
+    display: block;
+    position: absolute;
+
+    .table-sm & {
+      bottom: 0.9rem;
+    }
+  }
+
+  &::before {
+    content: "\2191";
+  }
+
+  &::after {
+    content: "\2193";
+  }
+}
+
+[dir="ltr"] .sorting,
+[dir="ltr"] .sorting_asc,
+[dir="ltr"] .sorting_desc {
+  &::before {
+    right: 0.85em;
+  }
+
+  &::after {
+    right: 0.5em;
+  }
+}
+
+[dir="rtl"] .sorting,
+[dir="rtl"] .sorting_asc,
+[dir="rtl"] .sorting_desc {
+  &::before {
+    left: 0.85em;
+  }
+
+  &::after {
+    left: 0.5em;
+  }
+}
+
+.sorting {
+
+  &::before,
+  &::after {
+    opacity: 0.5;
+  }
+
+  // Icons in table header
+  i {
+    padding: 0 0.313rem;
+    vertical-align: -0.094rem;
+  }
+}
+
+.sorting_asc {
+  &::before {
+    opacity: 1;
+  }
+
+  &::after {
+    opacity: 0.5;
+  }
+}
+
+.sorting_desc {
+  &::before {
+    opacity: 0.5;
+  }
+
+  &::after {
+    opacity: 1;
+  }
+}

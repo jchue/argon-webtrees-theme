@@ -73,7 +73,7 @@ return new class extends MinimalTheme implements ModuleCustomInterface, ModuleGl
          */
         View::registerCustomView('::modules/gedcom_stats/statistics', $this->name() . '::modules/gedcom_stats/statistics'); // Blocks > Statistics
         View::registerCustomView('::modules/todo/research-tasks', $this->name() . '::modules/todo/research-tasks'); // Blocks > Research tasks
-        View::registerCustomView('::modules/recent_changes/changes-list', $this->name() . '::modules/recent_changes/changes-list'); // Blocks > Recent changes
+        View::registerCustomView('::modules/recent_changes/changes-list', $this->name() . '::modules/recent_changes/changes-list'); // Blocks > Recent changes (list layout)
 
         /**
          * Individual Page
@@ -104,11 +104,11 @@ return new class extends MinimalTheme implements ModuleCustomInterface, ModuleGl
          */
         View::registerCustomView('::lists/surnames-table', $this->name() . '::lists/surnames-table'); // Lists > Families AND Lists > Individuals
         View::registerCustomView('::modules/place-hierarchy/page', $this->name() . '::modules/place-hierarchy/page'); // Lists > Place hierarchy page
-        View::registerCustomView('::place-hierarchy', $this->name() . '::place-hierarchy'); // Lists > Place hierarchy page > Place hierarchy
+        View::registerCustomView('::place-hierarchy', $this->name() . '::place-hierarchy'); // Lists > Place hierarchy page > Place hierarchy (without map)
         View::registerCustomView('::modules/place-hierarchy/map', $this->name() . '::modules/place-hierarchy/map'); // Lists > Place hierarchy page > map
         View::registerCustomView('::modules/place-hierarchy/sidebar', $this->name() . '::modules/place-hierarchy/sidebar'); // Lists > Place hierarchy page > location entries
         View::registerCustomView('::modules/place-hierarchy/popup', $this->name() . '::modules/place-hierarchy/popup'); // Lists > Place hierarchy page >  map pin popup
-        View::registerCustomView('::modules/place-hierarchy/list', $this->name() . '::modules/place-hierarchy/list'); // Lists > Place hierarchy page > Place list
+        View::registerCustomView('::modules/place-hierarchy/list', $this->name() . '::modules/place-hierarchy/list'); // Lists > Place hierarchy page > Place list (under map)
         View::registerCustomView('::lists/repositories-table', $this->name() . '::lists/repositories-table'); // Lists > Repositories
         View::registerCustomView('::lists/notes-table', $this->name() . '::lists/notes-table'); // Lists > Shared notes
         View::registerCustomView('::lists/sources-table', $this->name() . '::lists/sources-table'); // Lists > Sources

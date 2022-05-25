@@ -9,6 +9,6 @@
 <?php
 
 $view = view('::modules/pedigree-map/chart', get_defined_vars());
-$view = preg_replace('/list-unstyled px-md-1/', 'list-unstyled', $view); // Remove spacing outside horizontal separators in relatives list
+$view = preg_replace('/list-unstyled px-1/', 'list-unstyled', $view); // Remove spacing outside horizontal separators in relatives list
 
 echo $view;

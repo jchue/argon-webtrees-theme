@@ -8,8 +8,8 @@ use Fisharebest\Webtrees\I18N;
 use Illuminate\Support\Collection;
 
 /**
- * @var Collection<object> $faqs
- * @var string             $title
+ * @var Collection<int,object> $faqs
+ * @var string                 $title
  */
 
 ?>
@@ -33,7 +33,7 @@ use Illuminate\Support\Collection;
             </span>
         </header>
         <main class="faq_body">
-            <?= substr($faq->faqbody, 0, 1) === '<' ? $faq->faqbody : nl2br(e($faq->faqbody), false) ?>
+            <?= str_starts_with($faq->faqbody, '<') ? $faq->faqbody : nl2br(e($faq->faqbody), false) ?>
         </main>
     </article>
 <?php endforeach ?>
