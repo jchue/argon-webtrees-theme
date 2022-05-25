@@ -7,16 +7,15 @@ const primaryHeaderHeight = primaryHeader.offsetHeight;
 const siteContent = document.getElementById('content');
 
 function setHeader() {
-    const scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
+  const scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
 
-    if (scrollPosition > secondaryHeaderHeight) {
-        primaryHeader.style.position = 'fixed';
-        siteContent.style.marginTop = primaryHeaderHeight + 'px';
-
-    } else {
-        primaryHeader.style.position = 'static';
-        siteContent.style.marginTop = 0;
-    }
+  if (scrollPosition > secondaryHeaderHeight) {
+    primaryHeader.style.position = 'fixed';
+    siteContent.style.marginTop = `${primaryHeaderHeight}px`;
+  } else {
+    primaryHeader.style.position = 'static';
+    siteContent.style.marginTop = 0;
+  }
 }
 
 window.addEventListener('load', setHeader);
