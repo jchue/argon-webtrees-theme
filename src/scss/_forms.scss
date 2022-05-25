@@ -45,7 +45,9 @@ select {
 }
 
 .form-label,
+.label,
 label {
+  font-weight: $form-label-font-weight;
   margin: 0 0 $form-label-margin-bottom 0;
 }
 

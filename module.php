@@ -103,6 +103,7 @@ return new class extends MinimalTheme implements ModuleCustomInterface, ModuleGl
          * Lists
          */
         View::registerCustomView('::lists/surnames-table', $this->name() . '::lists/surnames-table'); // Lists > Families AND Lists > Individuals
+        View::registerCustomView('::modules/media-list/page', $this->name() . '::modules/media-list/page'); // Lists > Media objects
         View::registerCustomView('::modules/place-hierarchy/page', $this->name() . '::modules/place-hierarchy/page'); // Lists > Place hierarchy page
         View::registerCustomView('::place-hierarchy', $this->name() . '::place-hierarchy'); // Lists > Place hierarchy page > Place hierarchy (without map)
         View::registerCustomView('::modules/place-hierarchy/map', $this->name() . '::modules/place-hierarchy/map'); // Lists > Place hierarchy page > map
