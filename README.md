@@ -2,7 +2,7 @@
 
 # Argon Theme for webtrees
 
-A theme for the [webtrees](https://github.com/fisharebest/webtrees) online geneology application based on the [Argon Design System](https://github.com/creativetimofficial/argon-design-system). Since webtrees is templated with Bootstrap, this theme applies Argon styles in the majority of places but adapts where necessary.
+A theme for the [webtrees](https://github.com/fisharebest/webtrees) online geneology application based on the [Argon Dashboard](https://github.com/creativetimofficial/argon-dashboard). Since webtrees is templated with Bootstrap, this theme applies Argon styles in the majority of places but adapts where necessary.
 
 ## Screenshots
 
@@ -51,20 +51,33 @@ When change is made to these views in the webtrees codebase, it needs to be inco
 **Prerequisites:**
 
 - Node.js
-- gulp
 - webtrees
 
-To support Sass and ECMAScript, the stylesheets and scripts are developed in their respective directories under `src/`. They then need to be compiled/transpiled to `resources/`, from which webtrees serves the theme. The views themselves are housed directly under the `resources/` directory already.
+**Clone repository**
 
-To keep things simple, webtrees itself is not included nor is it enforced as a dependency. In fact, the entire repository can just be placed in the `modules_v4/` directory of webtrees, and the theme should work fine, as long as the Sass and JavaScript are transpiled. Gulp just makes it easier by compiling `src/*.scss` into `resources/css/*.css` and transpiling `src/js/*.js` into `resources/js/*.js`.
+Unfortunately, only `leaflet` and `tom-select` are available in the npm Registry. `argon-dashboard` and `BeautifyMarker` must be sourced as Git submodules.
 
-For automatic compiling/transpiling during development:
-```sh
-npx gulp watch
+Therefore, you must pass the `--recurse-submodules` flag when cloning the repository in order for their contents to be populated:
+
+```
+git clone --recurse-submodules git@github.com:jchue/argon-webtrees-theme.git
 ```
 
-To build and package:
+**Install dependencies and run in watch mode**
+
+To keep things simple, webtrees itself is not included nor is it enforced as a dependency. Just place the entire repository in the `modules_v4/` directory of webtrees, then run:
+
 ```sh
-npx gulp build
+npm install
+npm run dev
 ```
-This will compile/transpile the stylsheets/scripts and package them, along with the views, in a `dist/` directory.
+
+To support Sass and ECMAScript, the stylesheets and scripts are developed in their respective directories under `src/`. When a change is detected, they are compiled/transpiled to `resources/`, from which webtrees serves the theme. The PHP views themselves are housed directly under the `resources/` directory already.
+
+**Build and package**
+
+```sh
+npm run build
+```
+
+This will compile/transpile the stylsheets/scripts and package them, along with the PHP views, in a `dist/` directory.
