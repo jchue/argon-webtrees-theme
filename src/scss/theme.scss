@@ -209,6 +209,7 @@ ul.pagination {
 
 #secondary-header {
   background-color: map-get($custom-colors, "default");
+  background-image: linear-gradient(310deg,#141727,#3a416f);
   color: map-get($theme-colors, "white");
   @include font-size($font-size-sm);
   padding: 0.313rem 0;
@@ -252,6 +253,7 @@ ul.pagination {
 
 #primary-header {
   background-color: map-get($custom-colors, "default");
+  background-image: linear-gradient(310deg,#141727,#3a416f);
   box-shadow: 0 10px 20px rgba(50, 50, 93, .2);
   left: 0;
   padding: 1.25rem 0;
@@ -266,11 +268,11 @@ ul.pagination {
       color: map-get($theme-colors, "white");
       flex-basis: content;
       font-size: 2rem;
-      font-weight: 800;
       margin-bottom: 0;
 
       a {
         color: map-get($theme-colors, "white");
+        transition: $nav-link-transition;
 
         &:hover {
           color: darken(map-get($theme-colors, "white"), 20%);
@@ -630,6 +632,15 @@ div[id^=caldiv] {
 /**
  * Individual Page
  */
+
+/* Names */
+
+#individual-names {
+  .label {
+    font-weight: $font-weight-normal;
+    margin-bottom: 0;
+  }
+}
 
 /* Families Tab */
 
@@ -1050,23 +1061,12 @@ table.tv_tree {
  */
 
 .wt-block-content-user_messages {
-  label {
-    display: block;
+  .table-responsive {
+    margin-bottom: 2rem;
   }
 
-  select#to {
-    margin-right: 2%;
-    width: 83%;
-  }
-
-  select#to+button {
-    margin: 0 !important;
-    padding-right: 0 !important;
-    padding-left: 0 !important;
-    width: 15%;
-  }
-
-  .list_label:first-child {
+  /* Center header of checkbox column */
+  .wt-page-options-label:first-child {
     text-align: center;
   }
 
