@@ -1,4 +1,5 @@
-![Latest Release](https://img.shields.io/badge/release-v0.14.2-blue)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/jchue/argon-webtrees-theme)](https://github.com/jchue/argon-webtrees-theme/releases/latest)
+[![webtrees major version](https://img.shields.io/badge/webtrees-v2.1.x-9cf)](https://webtrees.net/download)
 
 # Argon Theme for webtrees
 
@@ -20,7 +21,7 @@ A theme for the [webtrees](https://github.com/fisharebest/webtrees) online geneo
 
 ## Compatibility
 
-webtrees 2.0.14 (see [prior releases](https://github.com/jchue/argon-webtrees-theme/releases) for older versions)
+webtrees 2.1.x (see [prior releases](https://github.com/jchue/argon-webtrees-theme/releases) for older versions)
 
 ## Installation
 

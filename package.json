@@ -1,7 +1,4 @@
 {
-  "name": "argon",
-  "version": "0.14.2",
-  "description": "",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -22,8 +19,6 @@
     "build:other": "cp module.php dist/ && cp -R resources/views/ dist/resources/views/",
     "build": "npm run build:clean; concurrently --prefix-colors  \"bgBlue.bold,bgMagenta.bold\" \"npm:build:css\" \"npm:build:js\" && npm run build:other"
   },
-  "author": "Jonathan Chue",
-  "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.17.10",
     "@babel/core": "^7.17.10",
