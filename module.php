@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace JChue\WebtreesThemes\Argon;
 
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\MinimalTheme;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomTrait;
@@ -19,7 +20,7 @@ return new class extends MinimalTheme implements ModuleCustomInterface, ModuleGl
      */
     public function title(): string
     {
-        return 'Argon';
+        return I18N::translate('Argon');
     }
 
     /**
@@ -78,7 +79,8 @@ return new class extends MinimalTheme implements ModuleCustomInterface, ModuleGl
         /**
          * Individual Page
          */
-        View::registerCustomView('::individual-page', $this->name() . '::individual-page'); // Individual page template
+        View::registerCustomView('::individual-page-images', $this->name() . '::individual-page-images'); // Individual page thumbnails
+        View::registerCustomView('::individual-page-tabs', $this->name() . '::individual-page-tabs'); // Individual page tabs
         View::registerCustomView('::modules/relatives/family', $this->name() . '::modules/relatives/family'); // Individual > Families tab
         View::registerCustomView('::modules/stories/tab', $this->name() . '::modules/stories/tab'); // Individual > Stories tab
         View::registerCustomView('::modules/lightbox/tab', $this->name() . '::modules/lightbox/tab'); // Individual > Album tab
@@ -142,6 +144,7 @@ return new class extends MinimalTheme implements ModuleCustomInterface, ModuleGl
         // Only files in the /public/ folder will be accessible via the webserver.
         // Since modules cannot copy their files to the /public/ folder, they need to provide them via a callback.
         $stylesheets[] = $this->assetUrl('css/theme.css');
+        $stylesheets[] = $this->assetUrl('css/fontawesome.css');
 
         return $stylesheets;
     }

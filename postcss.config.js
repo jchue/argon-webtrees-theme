@@ -1,3 +1,5 @@
+const path = require('node:path');
+
 module.exports = (ctx) => ({
   map: false,
   plugins: {
@@ -10,9 +12,13 @@ module.exports = (ctx) => ({
       }],
     } : false,
     'postcss-import': { path: ['src/scss'] },
+    /**
+     * TODO: Reconsider inlining font faces and instead defining them on page;
+     * would need to figure out how to exclude fontawesome.css from PostCSS processing
+     */
     'postcss-url': {
       url: 'inline',
-      basePath: ['../../node_modules/leaflet/dist'],
+      basePath: [path.resolve('node_modules/leaflet/dist'), path.resolve('node_modules/@fortawesome/fontawesome-free/webfonts')],
     },
   },
 });

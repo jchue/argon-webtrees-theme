@@ -1,0 +1,7 @@
+<?php
+
+$view = view('::individual-page-images', get_defined_vars());
+
+$view = preg_replace('/text-center/', 'text-center small"><a', $view); // Make "Add a media object" smaller
+
+echo $view;

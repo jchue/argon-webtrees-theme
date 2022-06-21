@@ -830,7 +830,7 @@ table.tv_tree {
 
   td,
   tbody td {
-    border: none;
+    border: none !important; /* Override tr:first-child border-top */
     padding: 0;
   }
 
