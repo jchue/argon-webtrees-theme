@@ -1,0 +1,68 @@
+{
+    "favicon_generation": {
+        "api_key": "$API_KEY",
+        "master_picture": {
+            "type": "url",
+            "url": "https://raw.githubusercontent.com/Tuetenk0pp/argon-webtrees-theme/master/logo.svg"
+        },
+        "files_location": {
+            "type": "path",
+            "path": "/path/to/icons"
+        },
+        "favicon_design": {
+            "desktop_browser": {},
+            "ios": {
+                "picture_aspect": "no_change",
+                "assets": {
+                    "ios6_and_prior_icons": false,
+                    "ios7_and_later_icons": true,
+                    "precomposed_icons": false,
+                    "declare_only_default_icon": true
+                }
+            },
+            "windows": {
+                "picture_aspect": "no_change",
+                "background_color": "#5e72e4",
+                "assets": {
+                    "windows_80_ie_10_tile": true,
+                    "windows_10_ie_11_edge_tiles": {
+                        "small": false,
+                        "medium": true,
+                        "big": true,
+                        "rectangle": false
+                    }
+                }
+            },
+            "android_chrome": {
+                "picture_aspect": "shadow",
+                "manifest": {
+                    "name": "Webtrees",
+                    "display": "standalone",
+                    "orientation": "portrait"
+                },
+                "assets": {
+                    "legacy_icon": true,
+                    "low_resolution_icons": false
+                },
+                "theme_color": "#fff"
+            },
+            "safari_pinned_tab": {
+                "picture_aspect": "black_and_white",
+                "threshold": 60,
+                "theme_color": "#5e72e4"
+            }
+        },
+        "settings": {
+            "compression": "3",
+            "scaling_algorithm": "Mitchell",
+            "error_on_image_too_small": true,
+            "readme_file": true,
+            "html_code_file": false,
+            "use_path_as_is": false
+        },
+        "versioning": {
+            "param_name": "ver",
+            "param_value": "15Zd8"
+        }
+    }
+}
