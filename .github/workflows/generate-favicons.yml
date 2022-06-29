@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  convert:
+  make-favicons:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,10 +22,4 @@ jobs:
           API_KEY: ${{ secrets.REALFAVICONGENERATOR_API_KEY }}
         run: |
           package_url=$(curl -X POST -H "Content-Type: application/json" -d @realfavicongenerator.json https://realfavicongenerator.net/api/favicon | jq -r .favicon_generation_result.favicon.package_url) || exit
-          wget -O package.zip $package_url
-          
-      - name: move files in place
-        run: |
-          mkdir favicons
-          unzip package.zip -d favicons
-          rm package.zip
+
