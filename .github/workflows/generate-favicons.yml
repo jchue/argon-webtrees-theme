@@ -1,6 +1,9 @@
 name: Logo and Favicon Generation
 
 on:
+  push:
+    paths:
+      - 'logo.svg'
   workflow_dispatch:
 
 jobs:
@@ -28,3 +31,11 @@ jobs:
           mkdir favicons
           unzip package.zip -d favicons/
           rm package.zip
+          
+      - name: commit files      
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "generated"
+          git push
