@@ -29,7 +29,7 @@ jobs:
       - name: move files into place
         run: |
           mkdir favicons -p
-          unzip package.zip -d favicons/
+          unzip package.zip -ud favicons/
           rm package.zip
           
       - name: commit files      
