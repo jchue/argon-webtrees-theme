@@ -1,40 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 
-<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1 1">
+<svg 
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    width="100%"
+    height="100%"
+    viewBox="0 0 100 100">
     <defs>
-        <linearGradient
-                id="grad1"
-                x1="0"
-                y1="0"
-                x2="0"
-                y2="1"
-                gradientTransform="rotate(310)">
-            <stop
-                offset="0%"
-                stop-color="#3a416f"/>
-            <stop
-                offset="100%"
-                stop-color="#141727"/>
+        <linearGradient id="grad1" x1="0" y1="0" x2="0" y2="1" gradientTransform="rotate(310)">
+            <stop offset="0" stop-color="#3a416f"/>
+            <stop offset="1" stop-color="#141727"/>
         </linearGradient>
     </defs>
-    <rect
-        width="100%"
-        height="100%"
-        x="0%"
-        y="0%"
-        rx="20%"
-        ry="20%"
-        fill="url(#grad1)"/>
-    <text
-        x="50%"
-        y="50%"
-        text-anchor="middle"
-        dominant-baseline="central"
-        fill="#fff"
-        text-align="center"
-        font-family="Open Sans"
-        font-weight="bold"
-        font-size="3.6%">
-        Wt
-    </text>
+    <rect width="100" height="100" x="0" y="0" rx="20" ry="20" fill="url(#grad1)"/>
+    <text x="50" y="70" text-anchor="middle" fill="#fff" text-align="center" font-family="Open Sans" font-weight="bold" font-size="56">Wt</text>
 </svg>
