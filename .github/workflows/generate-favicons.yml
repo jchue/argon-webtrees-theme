@@ -28,7 +28,7 @@ jobs:
           wget -O package.zip $PACKAGE_URL
       - name: move files into place
         run: |
-          mkdir favicons
+          mkdir favicons -p
           unzip package.zip -d favicons/
           rm package.zip
           
