@@ -20,6 +20,4 @@ jobs:
       - name: get favicons
         env:
           API_KEY: ${{ secrets.REALFAVICONGENERATOR_API_KEY }}
-        run: |
-          package_url=$(curl -X POST -H "Content-Type: application/json" -d @realfavicongenerator.json https://realfavicongenerator.net/api/favicon | jq -r .favicon_generation_result.favicon.package_url) || exit
-
+        run: curl -X POST -H "Content-Type: application/json" -d @realfavicongenerator.json https://realfavicongenerator.net/api/favicon
