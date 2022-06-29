@@ -1,0 +1,27 @@
+name: Logo and Favicon Generation
+
+on:
+  workflow_dispatch:
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      - name: update apt
+        run: sudo apt update
+        
+      - name: install json parser
+        run: sudo apt install jq -y
+        
+      - name: get favicons
+        run: |
+          package_url=$(curl -X POST -H "Content-Type: application/json" -d @realfavicongenerator.json https://realfavicongenerator.net/api/favicon | jq -r .favicon_generation_result.favicon.package_url) || exit
+          wget -O package.zip $package_url
+          
+      - name: move files in place
+        run: |
+          unzip package.zip -d favicons
