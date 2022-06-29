@@ -1,6 +1,5 @@
 {
     "favicon_generation": {
-        "api_key": "$API_KEY",
         "master_picture": {
             "type": "url",
             "url": "https://raw.githubusercontent.com/Tuetenk0pp/argon-webtrees-theme/master/logo.svg"
