@@ -1,5 +1,6 @@
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/jchue/argon-webtrees-theme)](https://github.com/jchue/argon-webtrees-theme/releases/latest)
 [![webtrees major version](https://img.shields.io/badge/webtrees-v2.1.x-9cf)](https://webtrees.net/download)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/tuetenk0pp/argon-webtrees-theme/Logo%20and%20Favicon%20Generation?label=favicon%20generation)
 
 # Argon Theme for webtrees
 
