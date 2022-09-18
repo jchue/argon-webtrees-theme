@@ -21,14 +21,14 @@ use Fisharebest\Webtrees\Tree;
          */
         ?>
         <article class="story mb-4 pb-4">
-            <header class="story_title descriptionbox text-center rela">
-                <h4><?= e($story->title) ?></h4>
+            <header class="wt-story-title descriptionbox text-center">
+                <h3><?= e($story->title) ?></h3>
             </header>
-            <div class="story_body optionbox">
-                <?= $story->story_body ?>
+            <div class="wt-story-body optionbox">
+                <p><?= $story->story_body ?></p>
             </div>
             <?php if ($is_admin) : ?>
-                <footer class="story_edit text-right">
+                <footer class="wt-story-edit-link text-right">
                     <a href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'block_id' => $story->block_id, 'tree' => $tree->name(), 'url' => $individual->url()])) ?>" class="btn btn-link">
                         <?= view('icons/edit') ?>
                         <?= I18N::translate('Edit the story') ?>
@@ -44,10 +44,10 @@ use Fisharebest\Webtrees\Tree;
      */
     ?>
     <?php if ($is_admin) : ?>
-        <div>
+        <p class="wt-story-add-link">
             <a href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'xref' => $individual->xref(), 'tree' => $tree->name(), 'url' => $individual->url()])) ?>">
                 <?= I18N::translate('Add a story') ?>
             </a>
-        </div>
+        </p>
     <?php endif ?>
 </div>
