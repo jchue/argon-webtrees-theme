@@ -32,9 +32,11 @@ webtrees 2.1.x (see [prior releases](https://github.com/jchue/argon-webtrees-the
 4. Upload the folder into the `modules_v4` directory of the webtrees installation on your web server.
 5. Ensure the theme is enabled in your Control panel.
 
+**Optional Step:** If you would like to use the alternative logo ([`logo.svg`](./logo.svg)), replace the apple-touch-icon.png and favicon-files you find in the web root and public directories with the respective files you find in the [assets directory](./assets/) in this repository.
+
 ## Structure
 
-Because webtrees 2 is built with Bootstrap by default, the majority of this theme is just a matter of applying the Argon stylesheet. 
+Because webtrees 2 is built with Bootstrap by default, the majority of this theme is just a matter of applying the Argon stylesheet.
 
 Additionally, there are a handful of opinionated changes, mostly regarding sizing and spacing, requiring some views to be overwritten. Most of these are achieved with a simple replacement function to add/remove/modify classes and elements. Therefore, when a change is introduced in the webtrees codebase, these views should adopt them accordingly unless there is a drastic change to the template.
 
