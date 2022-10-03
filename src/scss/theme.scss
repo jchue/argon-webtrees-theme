@@ -1096,8 +1096,9 @@ table.tv_tree {
   box-shadow: $box-shadow-sm;
 }
 
-/* Also includes Family page (since it utilizes many of the same components but lacks a chart wrapper class) */
+/* Also includes blocks and Family page (since they utilize many of the same components but lacks a chart wrapper class) */
 .wt-chart,
+.wt-block-charts,
 .wt-family-members {
   td {
     border-bottom: none;
@@ -1348,6 +1349,14 @@ table.tv_tree {
 
   .wt-family-break {
     page-break-before: always;
+  }
+}
+
+/* Family Chart */
+
+.wt-family-members {
+  .wt-chart-box {
+    width: 15rem;
   }
 }
 
