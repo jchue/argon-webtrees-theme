@@ -19,11 +19,14 @@ jobs:
       - name: checkout code
         uses: actions/checkout@v3
 
-      - name: convert files
-        run: |
-          inkscape -w 180 -h 180 logo.svg -o assets/apple-touch-icon.png
-          inkscape -w 32 -h 32 logo.svg -o assets/favicon-32.png
-          inkscape -w 192 -h 192 logo.svg -o assets/favicon-192.png
+      - name: list files
+        run: ls -la
+
+      # - name: convert files
+      #   run: |
+      #     inkscape -w 180 -h 180 logo.svg -o assets/apple-touch-icon.png
+      #     inkscape -w 32 -h 32 logo.svg -o assets/favicon-32.png
+      #     inkscape -w 192 -h 192 logo.svg -o assets/favicon-192.png
 
       - name: commit changes
         run: |
