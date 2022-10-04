@@ -23,7 +23,7 @@ jobs:
         run: |
           echo 'note inkscape version'
           inkscape -V
-  	      echo 'commands will only work on inkscape older than 1.0'
+          echo 'commands will only work on inkscape older than 1.0'
           echo 'see this stackoverflow post for more info'
           echo 'https://stackoverflow.com/a/14174624'
           inkscape -z -w 180 -h 180 input.svg -e assets/apple-touch-icon.png
