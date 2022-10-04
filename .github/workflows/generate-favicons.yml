@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: install inkscape
+      - name: install inkscape and open-sans
         run: |
           sudo apt-get update
-          sudo apt-get install inkscape -y
+          sudo apt-get install inkscape fonts-open-sans -y
 
       - name: checkout code
         uses: actions/checkout@v3
