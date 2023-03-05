@@ -446,6 +446,7 @@ div[id^=caldiv] {
 .wt-places-tab-sidebar,
 .wt-pedigree-map-sidebar,
 .wt-place-hierarchy-sidebar {
+  background-color: map-get($theme-colors, "white");
   height: 100%;
   overflow-y: scroll;
   padding: 0;
@@ -668,6 +669,7 @@ div[id^=caldiv] {
 .tv_out {
   -webkit-box-align: center;
   align-items: center;
+  background-color: map-get($theme-colors, "white");
   display: -webkit-box;
   display: flex;
   height: 50vh;
@@ -1086,6 +1088,16 @@ table.tv_tree {
   margin-bottom: 2rem;
   overflow-x: auto;
   overflow-y: hidden;
+}
+
+.wt-icon-enter-fullscreen,
+:fullscreen .wt-icon-exit-fullscreen {
+  display: inline;
+}
+
+.wt-icon-exit-fullscreen,
+:fullscreen .wt-icon-enter-fullscreen {
+  display: none;
 }
 
 /* For charts with potential overflow */

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\RequestHandlers\AppleTouchIconPng;
 use Fisharebest\Webtrees\Http\RequestHandlers\BrowserconfigXml;
@@ -66,7 +68,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\TreePage; // Used for getting tree
         })->implode('') ?>
     </head>
 
-    <body class="wt-global wt-theme-<?= e(app(ModuleThemeInterface::class)->name()) ?> wt-route-<?= e(substr(strrchr($route = Validator::attributes($request)->route()->name ?? 'no-route', '\\'),1)) ?>">
+    <body class="wt-global wt-theme-<?= e(app(ModuleThemeInterface::class)->name()) ?> wt-route-<?= e(basename(strtr(Validator::attributes($request)->route()->name ?? '/', ['\\' => '/']))) ?>">
         <header class="wt-header-wrapper d-print-none">
             <div id="secondary-header">
                 <div class="container-lg wt-header-container">
@@ -182,6 +184,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\TreePage; // Used for getting tree
                     rel: "gallery", // Turn all images on the page into a slideshow
                     slideshow: true,
                     slideshowAuto: false,
+                    slideshowSpeed: 4000,
                     // Add wheelzoom to the displayed image
                     onComplete: function () {
                         // Disable click on image triggering next image
