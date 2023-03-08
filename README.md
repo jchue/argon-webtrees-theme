@@ -56,9 +56,9 @@ When change is made to these views in the webtrees codebase, it needs to be inco
 
 **Clone repository**
 
-Unfortunately, only `leaflet` and `tom-select` are available in the npm Registry. `argon-dashboard` and `BeautifyMarker` must be sourced as Git submodules.
+`argon-dashboard` must be sourced as a Git submodules.
 
-Therefore, you must pass the `--recurse-submodules` flag when cloning the repository in order for their contents to be populated:
+Therefore, you must pass the `--recurse-submodules` flag when cloning the repository in order for its contents to be populated (under `src/resources/scss/argon-dashboard`):
 
 ```
 git clone --recurse-submodules git@github.com:jchue/argon-webtrees-theme.git
@@ -66,7 +66,16 @@ git clone --recurse-submodules git@github.com:jchue/argon-webtrees-theme.git
 
 **Install dependencies and run in watch mode**
 
-To keep things simple, webtrees itself is not included nor is it enforced as a dependency. Just place the entire repository in the `modules_v4/` directory of webtrees, then run:
+webtrees itself is a required dependency, since its base and vendor styles are utilized in the pipeline. First install it as well as its subdependencies:
+
+```sh
+composer install
+npm run vendor
+```
+
+Composer is configured to install webtrees from source, so it should include the required stylesheets.
+
+Then install the theme's Node dependencies and start the webpack watcher:
 
 ```sh
 npm install

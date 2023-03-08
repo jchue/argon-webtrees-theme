@@ -4,6 +4,10 @@
 
 table,
 .table {
+  // Override separated border applied by DataTables to Individuals table
+  &.dataTable {
+    border-collapse: collapse !important;
+  }
 
   td,
   th,
@@ -12,21 +16,24 @@ table,
   tbody td {
     border: none;
     font-size: $font-size-sm;
+
+    // Override Argon no-wrap
     white-space: normal;
-    /* Overwrite argon no-wrap */
   }
 
   th {
     background-color: $gray-100;
+    vertical-align: middle;
   }
 
   thead th {
-    @extend .text-uppercase, .text-secondary, .text-xxs, .font-weight-bolder, .opacity-7;
+    @extend .text-uppercase, .text-xs, .font-weight-bolder;
     border-top: $table-border-width solid $table-border-color;
   }
 
   & > :not(:first-child) {
-    border-top: none; /* Override dark border above tbody */
+    // Override dark border above tbody
+    border-top: none;
   }
 
   td,
@@ -36,7 +43,6 @@ table,
   }
 
   tbody tr:first-child {
-
     th,
     td {
       border-top: $table-border-width solid $table-border-color;
@@ -46,7 +52,8 @@ table,
   tbody tr:last-child {
     th,
     td {
-      border-width: 1px; /* Override missing bottom border */
+      // Override missing bottom border
+      border-width: 1px;
     }
   }
 
@@ -56,7 +63,6 @@ table,
 }
 
 .table-sm {
-
   td,
   th,
   thead th,
@@ -72,7 +78,6 @@ table,
 }
 
 .table-bordered {
-
   td,
   th,
   thead th,
@@ -134,7 +139,6 @@ table,
 }
 
 .sorting {
-
   &::before,
   &::after {
     opacity: 0.5;

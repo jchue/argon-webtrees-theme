@@ -24,12 +24,12 @@ input[type=text] {
   @extend .form-control;
 }
 
-/* If button is part of group, group should handle margins */
+// If button is part of group, group should handle margins
 .input-group .btn {
   margin-bottom: 0;
 }
 
-/* If preceeded by ARIA element, treat form control as first element in group */
+// If preceeded by ARIA element, treat form control as first element in group
 .input-group .visually-hidden +.form-control:not(:first-child),
 .input-group .visually-hidden + input[type="text"]:not(:first-child) {
   padding-left: 0.75rem;
@@ -47,18 +47,74 @@ select {
 .form-label,
 .label,
 label {
-  font-weight: $form-label-font-weight;
+  font-weight: $form-label-font-weight !important;
   margin: 0 0 $form-label-margin-bottom 0;
 }
 
-/* Tom Select */
-
+// Tom Select
 .ts-control {
   min-height: 2.25rem;
 }
 
-/* Images in items */
-.ts-control .gallery,
-.ts-dropdown .gallery {
-  margin-right: 0.5rem;
+// Twitter Typahead
+.twitter-typeahead {
+  width: 100%;
+
+  .input-group & {
+    display: block !important;
+
+    .tt-dropdown-menu {
+      top: 2rem !important;
+    }
+  }
+
+  .input-group.input-group-lg & {
+    .tt-dropdown-menu {
+      top: 2.75rem !important;
+    }
+  }
+
+  .input-group.input-group-sm & {
+    .tt-dropdown-menu {
+      top: 1.75rem !important;
+    }
+  }
+
+  .input-group>& {
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+
+  // Override no left border or padding when not-first-child form controls
+  .tt-hint+.tt-input {
+    border-left: $input-border-width solid $input-border-color !important;
+    padding-left: $input-padding-x !important;
+  }
+
+  .tt-dropdown-menu,
+  .tt-menu {
+    @extend .dropdown-menu;
+    display: none;
+    float: left;
+    left: 0;
+    min-width: 10rem;
+    position: absolute;
+    top: 100%;
+
+    .tt-dataset {
+      .tt-suggestion {
+        @extend .dropdown-item;
+      }
+    }
+  }
+
+  .active.tt-suggestion {
+    @extend .dropdown-item, .active;
+  }
+
+
+  .disabled.tt-suggestion {
+    @extend .dropdown-item, .disabled;
+  }
 }

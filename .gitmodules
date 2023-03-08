@@ -1,6 +1,3 @@
 [submodule "src/scss/argon-dashboard"]
 	path = src/scss/argon-dashboard
 	url = git@github.com:creativetimofficial/argon-dashboard.git
-[submodule "src/scss/BeautifyMarker"]
-	path = src/scss/BeautifyMarker
-	url = git@github.com:masajid390/BeautifyMarker.git

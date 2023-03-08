@@ -1,5 +1,6 @@
 # Dependency directories
 node_modules/
+vendor/
 
 # Sass
 .sass-cache/
@@ -8,8 +9,7 @@ node_modules/
 *.scss.map
 
 # Dev
-resources/css/
-resources/js/
+dev/
 
 # Build
 dist/

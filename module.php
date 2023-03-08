@@ -143,8 +143,8 @@ return new class extends MinimalTheme implements ModuleCustomInterface, ModuleGl
         // NOTE - a future version of webtrees will allow the modules to be stored in a private folder.
         // Only files in the /public/ folder will be accessible via the webserver.
         // Since modules cannot copy their files to the /public/ folder, they need to provide them via a callback.
+        $stylesheets[] = $this->assetUrl('css/vendor.css');
         $stylesheets[] = $this->assetUrl('css/theme.css');
-        $stylesheets[] = $this->assetUrl('css/fontawesome.css');
 
         return $stylesheets;
     }
@@ -157,7 +157,7 @@ return new class extends MinimalTheme implements ModuleCustomInterface, ModuleGl
      */
     public function bodyContent(): string
     {
-        $bodyContent = '<script src="' . $this->assetUrl('js/script.js') .'"></script>';
+        $bodyContent = '<script src="' . $this->assetUrl('js/theme.js') .'"></script>';
 
         return $bodyContent;
     }

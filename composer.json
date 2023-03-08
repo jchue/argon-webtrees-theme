@@ -1,0 +1,10 @@
+{
+	"config": {
+		"preferred-install": {
+			"fisharebest/webtrees": "source"
+		}
+	},
+	"require-dev": {
+		"fisharebest/webtrees": "~2.1"
+	}
+}

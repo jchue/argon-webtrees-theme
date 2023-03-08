@@ -1,9 +1,5 @@
 $custom-colors: ("default": #172b4d);
 
-$f-color: #fff4f9;
-$m-color: #f4fdff;
-$u-color: #fff;
-
 $table-cell-padding-y: 1rem;
 $table-cell-padding-x: 1rem;
 $table-cell-padding-y-sm: 0.75rem;
@@ -12,16 +8,34 @@ $table-cell-padding-x-sm: 0.75rem;
 $dropdown-border-color: #dee2e6;
 $box-shadow-xs: 0 1px 3px rgba(50, 50, 93, .15), 0 1px 0 rgba(0, 0, 0, .02);
 
-/* Sass */
-@import "argon-dashboard/assets/scss/argon-dashboard";
-@import "forms";
-@import "icons";
-@import "tables";
-@import "tom-select/dist/scss/tom-select.bootstrap5"; /* Custom selection dropdowns */
+// Common formatting for all themes
+@import "_base.css";
 
-/* PostCSS */
-@import "leaflet/dist/leaflet.css"; /* Maps */
-@import "BeautifyMarker/leaflet-beautify-marker-icon.css"; /* Map markers */
+// Argon
+@import "@fortawesome/fontawesome-free/css/all";
+@import "argon-dashboard/assets/scss/argon-dashboard";
+
+// Component customization
+@import "forms";
+@import "tables";
+@import "icons";
+
+:root {
+  --chart-line-radius: #{$border-radius-sm};
+  --chart-line: solid #{$border-color} #{$border-width};
+  --link-color-hover: #f00;
+  --link-color: #555;
+  --link-decoration-hover: none;
+  --link-decoration: none;
+  --sex-f-bg: #fff4f9;
+  --sex-f-fg: var(--bs-body-color);
+  --sex-m-bg: #f4fdff;
+  --sex-m-fg: var(--bs-body-color);
+  --sex-u-bg: #fff;
+  --sex-u-fg: var(--bs-body-color);
+  --sex-x-bg: #fceaa1;
+  --sex-x-fg: var(--bs-body-color);
+}
 
 /**
  * Bootstrap
@@ -36,6 +50,7 @@ caption {
   padding-top: 0;
 }
 
+// Make card header gray
 .card {
   .card-header {
     background-color: rgba($black, .05);
@@ -57,8 +72,7 @@ caption {
   }
 }
 
-/* Make accordions like cards */
-
+// Make accordions like cards
 .accordion-item {
   @extend .card;
   border-radius: 0;
@@ -89,20 +103,13 @@ caption {
   }
 }
 
-/* Accordion toggles */
-
-[data-bs-toggle="collapse"][aria-expanded="false"]>.wt-icon-collapse,
-[data-bs-toggle="collapse"][aria-expanded="true"]>.wt-icon-expand {
-  display: none;
-}
-
 .nav-pills {
+  // Because spacing not set in HTML
   @extend .p-1;
-  /* Spacing not set in HTML */
 
   .nav-link {
+    // Because spacing not set in HTML
     @extend .mb-0, .px-3, .py-1;
-    /* Spacing not set in HTML */
   }
 
   .nav-link.active {
@@ -112,29 +119,31 @@ caption {
 }
 
 .dropdown .dropdown-menu {
-  cursor: auto; /* Remove pointer from menu (should only be for individual dropdown items */
+  // Remove pointer from menu (should only be for individual dropdown items
+  cursor: auto;
+
   display: none;
+  overflow: visible;
 
   &.show {
     animation: $dropdown-animation-show;
     display: block;
   }
+
+  .dropdown-item.active {
+    background-color: map-get($theme-colors, "primary");
+    color: map-get($theme-colors, "white");
+  }
 }
 
-/* Transform properties in Argon's animation causes an issue with popper */
+// Transform properties in Argon's animation causes an issue with popper
 .dropdown.position-static .dropdown-menu.show {
   animation: none;
-  left: 0 !important;
   margin-top: 0 !important;
-  right: auto !important;
 }
 
 .modal {
   z-index: 1052;
-}
-
-.modal-header {
-  align-items: center;
 }
 
 .list-group {
@@ -155,11 +164,10 @@ caption {
 }
 
 ul.pagination {
-  margin-bottom: $form-label-margin-bottom;
+  margin-bottom: $form-label-margin-bottom !important;
 }
 
-/* Hack for Pagination Arrows */
-
+// Hack for pagination arrows
 .paginate_button.previous,
 .paginate_button.next {
   a {
@@ -203,8 +211,48 @@ ul.pagination {
  * Webtrees
  */
 
- .wt-site-logo {
+.wt-sex-m,
+.wt-chart-box-m,
+.tvM {
+  background-color: var(--sex-m-bg) !important;
+  color: var(--sex-m-fg) !important;
+}
+
+.wt-sex-f,
+.wt-chart-box-f,
+.tvF {
+  background-color: var(--sex-f-bg) !important;
+  color: var(--sex-f-fg) !important;
+}
+
+.wt-sex-u,
+.wt-chart-box-u,
+.tvU {
+  background-color: var(--sex-u-bg) !important;
+  color: var(--sex-u-fg) !important;
+}
+
+.wt-new {
+  box-shadow: 0 0 0 2px $teal;
+}
+
+.wt-old {
+  box-shadow: 0 0 0 2px $orange;
+}
+
+.wt-site-logo {
   display: none;
+}
+
+// Keyboard
+.wt-osk {
+  box-shadow: $box-shadow;
+  display: none;
+  position: fixed;
+}
+
+.indent {
+  padding-left: 1rem;
 }
 
 #secondary-header {
@@ -317,18 +365,7 @@ ul.pagination {
   text-align: center;
 }
 
-/* Hide source details in facts by efault */
-.source_citations {
-  display: none;
-}
-
-/* Preferred name */
-.starredname {
-  text-decoration: underline;
-}
-
-/* Calendar Modals */
-
+// Calendar modals for editing dates
 div[id^=caldiv] {
   border-radius: $dropdown-border-radius;
   box-shadow: $dropdown-box-shadow;
@@ -361,7 +398,7 @@ div[id^=caldiv] {
       text-align: center;
     }
 
-    /* Calendar days */
+    // Calendar days
     tr:not(:first-child) {
       td {
         background-color: transparent !important;
@@ -396,59 +433,21 @@ div[id^=caldiv] {
   }
 }
 
-.wt-sex-m {
-  background-color: $m-color;
-}
-
-.wt-sex-f {
-  background-color: $f-color;
-}
-
-.wt-sex-u {
-  background-color: $u-color;
-}
-
-.wt-new {
-  box-shadow: 0 0 0 2px $teal;
-}
-
-.wt-old {
-  box-shadow: 0 0 0 2px $orange;
-}
-
-.indent {
-  padding-left: 1rem;
-}
-
-/* Keyboard */
-.wt-osk {
-  box-shadow: $box-shadow;
-  display: none;
-  position: fixed;
-  top: 1rem;
-  z-index: 1000;
-}
-
-/* Maps (Pedigree Page, Place Hierarchy Page, Place Hierarhy Tab) */
+/**
+ * Maps (Pedigree Page, Place Hierarchy Page, Place Hierarhy Tab)
+ */
 
 .wt-places-tab-wrapper,
 .wt-pedigree-map-wrapper,
 .wt-place-hierarchy-wrapper {
   border-radius: $border-radius;
   box-shadow: $box-shadow-sm;
-  height: 70vh;
-}
-
-.wt-map {
-  max-height: 100%;
 }
 
 .wt-places-tab-sidebar,
 .wt-pedigree-map-sidebar,
 .wt-place-hierarchy-sidebar {
   background-color: map-get($theme-colors, "white");
-  height: 100%;
-  overflow-y: scroll;
   padding: 0;
 
   li.gchart {
@@ -466,12 +465,7 @@ div[id^=caldiv] {
       border-bottom: none;
     }
 
-    &:hover {
-      background-color: $gray-100;
-      cursor: pointer;
-    }
-
-    /* Currently selected */
+    // Currently selected
     &.messagebox {
       background-color: $gray-100;
     }
@@ -482,44 +476,25 @@ div[id^=caldiv] {
   }
 }
 
-/* OSM options */
-
-.leaflet-control-layers {
-  .leaflet-layerstree-header-pointer {
+.wt-places-tab-sidebar,
+.wt-place-hierarchy-sidebar {
+  li.gchart:hover {
+    background-color: $gray-100;
     cursor: pointer;
   }
+}
 
-  .leaflet-layerstree-hide,
-  .leaflet-layerstree-nevershow {
-    display: none;
-  }
-
-  .leaflet-layerstree-children.leaflet-layerstree-hide {
-    display: none;
-  }
-
-  .leaflet-layerstree-children {
-    padding: 0 1rem;
-  }
-
-  .leaflet-layerstree-children-nopad {
-    padding: 0;
-  }
-
+// OSM options
+.leaflet-control-layers {
   .leaflet-layerstree-header-label {
     margin: 0;
   }
 
-  .leaflet-control-layers-selector {
-    margin-right: 0.25rem;
-  }
 }
 
-/* Pin details */
-
+// Pin details
 .leaflet-popup {
   font-family: $font-family-base;
-  font-size: $font-size-xs;
 
   a {
     color: $link-color;
@@ -536,106 +511,24 @@ div[id^=caldiv] {
     .leaflet-popup-content {
       margin: 0;
 
-      div {
-        margin-bottom: 0.5rem;
+      .table {
+        margin: 0;
       }
     }
   }
 }
 
-.marker-cluster-small {
-  background-color: rgba(181, 226, 140, .6);
-
-  div {
-    background-color: rgba(110, 204, 57, .6);
-  }
-}
-
-.marker-cluster-medium {
-  background-color: rgba(241, 211, 87, .6);
-
-  div {
-    background-color: rgba(240, 194, 12, .6);
-  }
-}
-
-.marker-cluster-large {
-  background-color: rgba(253, 156, 115, .6);
-
-  div {
-    background-color: rgba(241, 128, 23, .6);
-  }
-}
-
-.leaflet-oldie {
-  .marker-cluster-small {
-    background-color: #b5e28c;
-
-    div {
-      background-color: #6ecc39;
-    }
-  }
-
-  .marker-cluster-medium {
-    background-color: #f1d357;
-
-    div {
-      background-color: #f0c20c;
-    }
-  }
-
-  .marker-cluster-large {
-    background-color: #fd9c73;
-
-    div {
-      background-color: #f18017;
-    }
-  }
-}
-
 .marker-cluster {
-  background-clip: padding-box;
-  border-radius: 20px;
-
   div {
-    width: 30px;
-    height: 30px;
-    margin-left: 5px;
-    margin-top: 5px;
-    text-align: center;
-    border-radius: 15px;
-    font-size: 12px;
+    font-family: $font-family-base;
   }
-
-  span {
-    line-height: 30px;
-  }
-}
-
-.leaflet-cluster-anim {
-
-  .leaflet-marker-icon,
-  .leaflet-marker-shadow {
-    -webkit-transition: -webkit-transform 0.3s ease-out, opacity 0.3s ease-in;
-    -moz-transition: -moz-transform 0.3s ease-out, opacity 0.3s ease-in;
-    -o-transition: -o-transform 0.3s ease-out, opacity 0.3s ease-in;
-    transition: transform 0.3s ease-out, opacity 0.3s ease-in;
-  }
-}
-
-.leaflet-cluster-spider-leg {
-  -webkit-transition: -webkit-stroke-dashoffset 0.3s ease-out, -webkit-stroke-opacity 0.3s ease-in;
-  -moz-transition: -moz-stroke-dashoffset 0.3s ease-out, -moz-stroke-opacity 0.3s ease-in;
-  -o-transition: -o-stroke-dashoffset 0.3s ease-out, -o-stroke-opacity 0.3s ease-in;
-  transition: stroke-dashoffset 0.3s ease-out, stroke-opacity 0.3s ease-in;
 }
 
 /**
  * Individual Page
  */
 
-/* Names */
-
+// Names
 #individual-names {
   .label {
     font-weight: $font-weight-normal;
@@ -643,50 +536,25 @@ div[id^=caldiv] {
   }
 }
 
-/* Families Tab */
+// Preferred name
+.starredname {
+  text-decoration: underline;
+}
 
+// Families tab
 .wt-chart-box-dropdown {
-  font-size: $font-size-sm;
-  white-space: nowrap;
-
-  &::before {
-    display: none; /* Hide arrow for these dropdowns */
-  }
-
   div[class^=fact_] {
     padding: $dropdown-item-padding-y $dropdown-item-padding-x; /* Add padding */
   }
 }
 
-/* Sources Tab */
-
-.wt-facts-table th {
-  min-width: 20%;
-}
-
-/* Interactive Tree Tab */
-
+// Interactive Tree tab
 .tv_out {
-  -webkit-box-align: center;
-  align-items: center;
   background-color: map-get($theme-colors, "white");
-  display: -webkit-box;
-  display: flex;
-  height: 50vh;
-  -webkit-box-pack: center;
-  justify-content: center;
-  min-height: 25vh;
-  max-height: 95vh;
-  overflow: hidden;
-  position: relative;
-  resize: vertical;
-
-  img {
-    border: 0;
-  }
+  border: none;
 }
 
-/* Only the tab, not the chart */
+// Only the tab, not the chart
 #tvTab_out {
   background-color: map-get($theme-colors, "white");
   border-radius: $border-radius;
@@ -695,28 +563,12 @@ div[id^=caldiv] {
 
 #tvStylesSubmenu,
 #tv_tools {
-  display: inline-block;
-  left: 0;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top: 0;
-  z-index: 90;
-
-  [dir=ltr] {
-    left: 0;
-  }
-
-  [dir=rtl] {
-    right: 0;
-  }
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
 }
 
 #tvStylesSubmenu {
-  display: none;
-  top: 0;
-  z-index: 91;
-
   [dir=ltr] {
     left: 0;
   }
@@ -728,18 +580,8 @@ div[id^=caldiv] {
 
 #tv_tools {
   ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-
     li.tv_button {
-      height: 1.5rem;
-      margin: 0;
-      padding: 0;
-      position: relative;
-      text-align: center;
-      vertical-align: middle;
-      width: 1.5rem;
+      border: none;
 
       [dir=ltr] & {
         float: left;
@@ -754,49 +596,18 @@ div[id^=caldiv] {
       }
 
       &:hover {
-        cursor: pointer;
-      }
-
-      a {
-        display: block;
-        margin: 0;
+        border: none;
       }
     }
+  }
 
-    li img {
-      border: none;
-      cursor: pointer;
-      height: 1.5rem;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-      vertical-align: middle;
-      width: 1.5rem;
-    }
-
-    li a.help img.icon {
-      height: 1rem;
-      margin: 0.188rem 0 0;
-      padding: 0;
-      width: 1rem;
-    }
+  #tvbCompact {
+    background-position: center;
+    background-repeat: no-repeat;
   }
 }
 
-#tvbCompact {
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAMAAADzapwJAAAAYFBMVEX///8ebbHNz8wAAAAaZqkib7Eca64fa64eba4kcLEkcLMZaKoZaKwVY6UaaKwfbbEQXqAebbAaaKofba4baKoZaqwhbq8hb7Eib7Acaqwcaq4daqwmcrMpdbYVZKcZZqmjvWxQAAAAAXRSTlMAQObYZgAAAHVJREFUeF51z0cOA0EIRNGCyc45h/vf0hKoUbXR/F09sQFzvaW0YH5BPVQ8xriO/Wb5WTs/AKjx1kCcz67qELySiDglshPkyCRqK4ZawOGPbahWvEfJ3in1UA9fUPcYLfNzuNy6qTsOJ+YGPFizN6m5a/I8cj9MEgMLAHk6jAAAAABJRU5ErkJggg==");
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
 #tvToolsHandler {
-  border: thin inset #f6f6f6;
-  cursor: move;
-  height: 1.5rem;
-  margin: 0.125rem;
-  overflow: hidden;
-  width: 0.125rem;
-
   [dir=ltr] & {
     float: left;
   }
@@ -804,123 +615,33 @@ div[id^=caldiv] {
   [dir=rtl] {
     float: right;
   }
-
-  &:hover {
-    border: thin outset #f6f6f6;
-  }
 }
 
-.tv_in {
-  display: inline-block;
-  clear: both;
-  cursor: move;
-}
-
-#tv_tree,
-table#tvTreeBorder td,
-table#tvTreeBorder td#tv_tree_top,
-table#tvTreeBorder td#tv_tree_topleft table#tvTreeBorder td#tv_tree_bottom,
-table#tvTreeBorder td#tv_tree_bottomleft,
-table#tvTreeBorder td#tv_tree_bottomright,
-table#tvTreeBorder td#tv_tree_left,
-table#tvTreeBorder td#tv_tree_right,
-table#tvTreeBorder td#tv_tree_topright {
-  background: none;
-}
-
-table.tv_tree {
-
-  td,
-  tbody td {
-    border: none !important; /* Override tr:first-child border-top */
-    padding: 0;
-  }
-
-  td.tv_vline {
-    background: repeat-x 50% 50%;
-    height: 100%;
-    width: 1px;
-  }
-
-  td.tv_vline_b {
-    background-image: url("data:image/gif;base64,R0lGODlhAQDECaEDAICpyYGpzIKry////yH5BAEKAAMALAAAAAABAOIEAAIjjI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyTNcbIBQAOw==");
-    vertical-align: top;
-  }
-
-  td.tv_vline_c,
-  td.tv_vline_h {
-    vertical-align: middle;
-  }
-
-  td.tv_vline_c {
-    height: 1px;
-  }
-
-  td.tv_vline_h {
-    background-image: url("data:image/gif;base64,R0lGODdhAQDiBIABAIGpzP///ywAAAAAAQDiBAACIoSPqcvtD6OctNqLs968+w+G4kiW5omm6sq27gvH8kzXXQEAOw==");
-  }
-
-  td.tv_vline_t {
-    background-image: url("data:image/gif;base64,R0lGODlhAQDECeMKAIGoyX6py4GpzISpxn6qz3+qzYGqyoOqy4CrzYKry////////////////////////yH5BAEKAA8ALAAA4gQBAOIEAAQwUMhJq7046827/2AojmRpnmiqrmzrvnAsz3Rt33iu73zv/8Bgp1AYDAgEQwJwCCAiADs=");
-    vertical-align: bottom;
-  }
-
-  div.tv_hline,
-  td.tv_hline {
-    overflow: hidden;
-    width: 8px;
-  }
-
+table#tv_tree {
   div.tv_hline,
   div.tv_vline {
     background-color: $table-border-color;
   }
 
-  div.tv_hline {
-    height: 1px;
-  }
-
-  div.tv_vline {
-    width: 1px;
-  }
-
-  div.tv_vline_b,
-  div.tv_vline_t {
-    height: 50%;
-  }
-
-  div.tv_vline_c {
-    height: 1px;
-    overflow: hidden;
-  }
-
-  div.tv_vline_h {
-    height: 100%;
-  }
-
   .tv_box {
     background: map-get($theme-colors, "white");
+    border: none;
     border-radius: $border-radius;
     box-shadow: $box-shadow-xs;
-    cursor: help;
     font-size: $font-size-xs;
     margin-bottom: 0.625rem;
-    padding: 0;
-    text-align: left;
     width: 11.25rem;
 
-    .tvSexSymbol {
-      font-family: x-large, serif;
-      font-weight: 700;
-      margin: 0.063rem;
-      vertical-align: top;
+    > div {
+      padding: 0.25rem 0.5rem !important;
+    }
+
+    .dashed {
+      border-top-left-radius: 0 !important;
+      border-top-right-radius: 0 !important;
     }
 
     img {
-      max-height: 3.125rem;
-      max-width: 5rem;
-      width: auto;
-
       [dir=ltr] & {
         float: left;
         margin-right: 0.625rem;
@@ -930,54 +651,6 @@ table.tv_tree {
         float: right;
         margin-left: 0.625rem;
       }
-    }
-
-    img.tv_box_loading {
-      height: 0.078rem;
-      margin: 0.125rem;
-      width: 0.75rem;
-
-      [dir=ltr] & {
-        float: right;
-      }
-
-      [dir=rtl] & {
-        float: left;
-      }
-    }
-
-    img.tv_treelink {
-      height: 1rem;
-      width: 1rem;
-
-      [dir=ltr] & {
-        float: right;
-      }
-
-      [dir=rtl] & {
-        float: left;
-      }
-    }
-
-    .tvSexSymbol {
-      font-family: x-large, serif;
-      font-weight: 700;
-      margin: 0.063rem;
-      vertical-align: top;
-    }
-
-    .tvF,
-    .tvM,
-    .tvU {
-      padding: 0.313rem 0.625rem;
-    }
-
-    .tvM {
-      background-color: $m-color;
-    }
-
-    .tvF {
-      background-color: $f-color;
     }
 
     .icon-silhouette-f,
@@ -994,52 +667,23 @@ table.tv_tree {
       }
     }
   }
-
-  .boxExpanded {
-    width: 15.625rem;
-
-    .tv_person_expanded {
-      min-height: 3.438rem;
-      padding: 0.5rem 0.75rem;
-      overflow: auto;
-
-      a {
-        font-weight: 700;
-      }
-    }
-  }
-
-  i.dates {
-    float: right;
-    font-size: 75%;
-    margin-left: 0.25rem;
-
-    [dir=rtl] & {
-      float: left;
-      margin-right: 0.25rem;
-    }
-  }
 }
 
-/* Stories Tab */
-
+// Stories tab
 .story:not(:last-child) {
   border-bottom: 1px solid $border-color;
 }
 
-/* Album Tab  */
-
-.wt-album-tab-caption {
+// Album tab
+.wt-tab-album .figure-caption {
   font-size: $font-size-xs;
 }
 
-/* Descendants Sidebar */
-
+// Descendants sidebar
 #sb_desc_content {
   font-size: $font-size-sm;
 
   ul {
-    line-height: $p-line-height;
     padding-left: 0;
 
     ul {
@@ -1052,10 +696,13 @@ table.tv_tree {
   }
 }
 
-/* Extra Info Sidebar */
-
+// Extra Information sidebar
 #sidebar-content-extra_info {
   font-size: $font-size-sm;
+
+  .wt-fact-edit-links {
+    margin-bottom: 0.5rem;
+  }
 }
 
 /**
@@ -1067,7 +714,7 @@ table.tv_tree {
     margin-bottom: 2rem;
   }
 
-  /* Center header of checkbox column */
+  // Center header of checkbox column
   .wt-page-options-label:first-child {
     text-align: center;
   }
@@ -1077,6 +724,12 @@ table.tv_tree {
     text-align: center;
     -webkit-transform: translateX(0);
     transform: translateX(0);
+  }
+
+  // Message cells
+  .wt-page-options-value[colspan] {
+    padding-top: 0;
+    padding-bottom: 0;
   }
 }
 
@@ -1090,17 +743,7 @@ table.tv_tree {
   overflow-y: hidden;
 }
 
-.wt-icon-enter-fullscreen,
-:fullscreen .wt-icon-exit-fullscreen {
-  display: inline;
-}
-
-.wt-icon-exit-fullscreen,
-:fullscreen .wt-icon-enter-fullscreen {
-  display: none;
-}
-
-/* For charts with potential overflow */
+// For charts with potential overflow
 .wt-chart-interactive,
 .wt-chart-pedigree {
   background-color: map-get($theme-colors, "white");
@@ -1108,10 +751,11 @@ table.tv_tree {
   box-shadow: $box-shadow-sm;
 }
 
-/* Also includes blocks and Family page (since they utilize many of the same components but lacks a chart wrapper class) */
+// Also includes blocks and Family page (since they utilize many of the same components but lack a chart wrapper class)
 .wt-chart,
+.wt-family-members,
 .wt-block-charts,
-.wt-family-members {
+.wt-block-gedcom_favorites {
   td {
     border-bottom: none;
   }
@@ -1121,7 +765,7 @@ table.tv_tree {
   }
 
   .wt-chart-box {
-    background: theme-colors("white");
+    background: map-get($theme-colors, "white");
     border-radius: $border-radius;
     box-shadow: $box-shadow-xs;
     font-size: $font-size-xs;
@@ -1130,115 +774,12 @@ table.tv_tree {
     padding: 0.5rem 0.625rem;
   }
 
-  .wt-chart-box-f {
-    background-color: $f-color;
-  }
-
-  .wt-chart-box-m {
-    background-color: $m-color;
-  }
-
-  .wt-chart-box-u {
-    background-color: $u-color;
-  }
-
   .wt-chart-box-zoom-dropdown {
-    border: none;
-    color: theme-colors("default");
-    font-size: $font-size-sm;
     line-height: $line-height-sm;
-    padding: 0.625rem;
-  }
-
-  .wt-chart-horizontal-spacer {
-    width: 1rem;
-  }
-
-  .wt-chart-horizontal-line {
-    border-bottom: $border-width solid $border-color;
-    height: 50%;
-    width: 1rem;
-  }
-
-  .wt-chart-horizontal-first-child {
-    border-top: $border-width solid $border-color;
-    height: 50%;
-    position: relative;
-    top: 50%;
-
-    [dir=ltr] & {
-      border-right: $border-width solid $border-color;
-      border-radius: 0 $border-radius 0 0;
-    }
-
-    [dir=rtl] & {
-      border-left: $border-width solid $border-color;
-      border-radius: $border-radius 0 0 0;
-    }
-  }
-
-  .wt-chart-horizontal-middle-child {
-    height: 100%;
-
-    [dir=ltr] & {
-      border-right: $border-width solid $border-color;
-    }
-
-    [dir=rtl] & {
-      border-left: $border-width solid $border-color;
-    }
-  }
-
-  .wt-chart-horizontal-last-child {
-    border-bottom: $border-width solid $border-color;
-    height: 50%;
-
-    [dir=ltr] & {
-      border-right: $border-width solid $border-color;
-      border-radius: 0 0 $border-radius 0;
-    }
-
-    [dir=rtl] & {
-      border-left: $border-width solid $border-color;
-      border-radius: 0 0 0 $border-radius;
-    }
-  }
-
-  .wt-chart-horizontal-first-parent {
-    border-top: $border-width solid $border-color;
-    height: 50%;
-    position: relative;
-    top: 50%;
-
-    [dir=ltr] & {
-      border-left: $border-width solid $border-color;
-      border-radius: $border-radius 0 0 0;
-    }
-
-    [dir=rtl] & {
-      border-right: $border-width solid $border-color;
-      border-radius: 0 $border-radius 0 0;
-    }
-  }
-
-  .wt-chart-horizontal-last-parent {
-    border-bottom: $border-width solid $border-color;
-    height: 50%;
-
-    [dir=ltr] & {
-      border-left: $border-width solid $border-color;
-      border-radius: 0 0 0 $border-radius;
-    }
-
-    [dir=rtl] & {
-      border-right: $border-width solid $border-color;
-      border-radius: 0 0 $border-radius 0;
-    }
   }
 }
 
-/* Compact Tree */
-
+// Compact Tree
 .wt-chart-compact {
   table {
     border-collapse: separate;
@@ -1248,16 +789,9 @@ table.tv_tree {
     height: 5rem;
     width: 9.375rem;
   }
-
-  .wt-chart-box-extra,
-  .wt-chart-box-facts,
-  .wt-chart-box-thumbnail {
-    display: none
-  }
 }
 
-/* Ancestors and Descendants Charts */
-
+// Ancestors and Descendants charts
 .wt-chart-ancestors,
 .wt-chart-descendants {
   .wt-chart-box {
@@ -1265,64 +799,6 @@ table.tv_tree {
     margin-bottom: 0.313rem;
     margin-top: 0.313rem;
     min-height: 5rem;
-    width: 20rem;
-  }
-
-  .wt-chart-box-lifespan {
-    display: none
-  }
-
-  .wt-chart-vertical-indent {
-    width: 2rem;
-  }
-
-  .wt-chart-vertical-line {
-    height: 100%;
-    width: 50%;
-
-    [dir=ltr] & {
-      border-left: $border-width solid $border-color;
-      right: 0;
-    }
-
-    [dir=rtl] & {
-      border-right: $border-width solid $border-color;
-      left: 0;
-    }
-  }
-
-  .wt-chart-vertical-child-line {
-    border-bottom: thin solid $border-color;
-    height: 1.5rem;
-    top: 0;
-    width: 50%;
-
-    [dir=ltr] & {
-      right: 0;
-    }
-
-    [dir=rtl] & {
-      left: 0;
-    }
-  }
-
-  .wt-chart-vertical-last-child-line {
-    border-bottom: $border-width solid $border-color;
-    height: 1.5rem;
-    top: 0;
-    width: 50%;
-
-    [dir=ltr] & {
-      border-left: $border-width solid $border-color;
-      border-radius: 0 0 0 $border-radius;
-      right: 0;
-    }
-
-    [dir=rtl] & {
-      border-right: $border-width solid $border-color;
-      border-radius: 0 0 $border-radius 0;
-      left: 0;
-    }
   }
 
   .wt-sosa-number,
@@ -1332,76 +808,30 @@ table.tv_tree {
     margin: 0 0.625rem;
     padding: 0.313rem 0.625rem;
   }
-
-  .chart-expand {
-    display: none;
-  }
-
-  .collapsed {
-    .chart-collapse {
-      display: none;
-    }
-
-    .chart-expand {
-      display: inline;
-    }
-  }
 }
 
-/* Family Book Chart */
-
-.wt-chart-family-book {
-  .wt-chart-box {
-    width: 15rem;
-  }
-
-  .wt-chart-box-lifespan {
-    display: none;
-  }
-
-  .wt-family-break {
-    page-break-before: always;
-  }
-}
-
-/* Family Chart */
-
-.wt-family-members {
-  .wt-chart-box {
-    width: 15rem;
-  }
-}
-
-/* Fan Chart */
-
+// Fan chart
 .fan_chart_menu {
   @extend .dropdown-menu;
 }
 
-/* Hourglass Chart */
-
+// Hourglass chart
 .wt-chart-hourglass {
   overflow-y: auto;
 
   .wt-chart-box {
     margin-top: 0.625rem;
     margin-bottom: 0.625rem;
-    width: 15rem;
-  }
-
-  .wt-chart-box-lifespan {
-    display: none;
   }
 }
 
-/* Lifespans Chart */
-
+// Lifespans chart
 .wt-timeline-chart {
   .wt-lifespans-scale {
     white-space: nowrap;
   }
 
-  /* Timeline markers */
+  // Timeline markers
   .wt-lifespans-decade {
     background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAAAlBAMAAAANYIJDAAAAGHRFWHRTb2Z0d2FyZQBwYWludC5uZXQgNC4wLjVlhTJlAAAACXBIWXMAAA7CAAAOwgEVKEqAAAAAD1BMVEUAAAAAAABHcEw2NjYAAADzBAk1AAAABHRSTlPT1wDTEG7QNgAAAElJREFUOMtjEFIiBBQYBlQNI03VAEWVUSgFIGWIoBgQojgpBgwDUM1hJMscit2jgM9ZVHOPC2Ew6NTQM3yGaPqhZx4kXc3AllEANjazI4q82bEAAAAASUVORK5CYII=");
     background-position-y: bottom;
@@ -1412,7 +842,7 @@ table.tv_tree {
     width: 4.375rem;
   }
 
-  /* Lifespans */
+  // Lifespans
   .wt-lifespans-individual {
     border-radius: $border-radius;
     box-shadow: $box-shadow-xs;
@@ -1421,7 +851,7 @@ table.tv_tree {
     padding: 0.313rem 0.625rem;
   }
 
-  /* Popup */
+  // Popup
   .wt-lifespans-summary {
     background-color: #fff;
     border-radius: $dropdown-border-radius;
@@ -1432,54 +862,21 @@ table.tv_tree {
   }
 }
 
-/* Pedigree Chart */
-
+// Pedigree chart
 .wt-chart-pedigree {
   overflow-y: auto;
-
-  .wt-chart-box-lifespan {
-    display: none;
-  }
 
   .wt-chart-pedigree-left,
   .wt-chart-pedigree-right {
     .wt-chart-box {
       margin-bottom: 1.5rem;
       min-height: 5rem;
-      width: 15rem;
     }
   }
 
   .wt-chart-pedigree-right {
     .wt-chart-box {
       margin-right: 1.5rem;
-    }
-
-    .wt-pedigree-lines {
-      border: $border-width solid $border-color;
-      bottom: 25%;
-      height: 50%;
-      top: 25%;
-      width: 25%;
-      z-index: -1;
-
-      [dir=ltr] & {
-        border-right: none;
-        border-radius: $border-radius 0 0 $border-radius;
-        right: 0;
-      }
-
-      [dir=rtl] & {
-        border-left: none;
-        border-radius: 0 $border-radius $border-radius 0;
-        left: 0;
-      }
-    }
-
-    .wt-generation-rev-2>.wt-pedigree-lines {
-      bottom: 12.5%;
-      height: 75%;
-      top: 12.5%;
     }
   }
 
@@ -1487,124 +884,39 @@ table.tv_tree {
     .wt-chart-box {
       margin-left: 1.5rem;
     }
-
-    .wt-pedigree-lines {
-      border: $border-width solid $border-color;
-      top: 25%;
-      bottom: 25%;
-      width: 25%;
-      height: 50%;
-      z-index: -1;
-
-      [dir=ltr] & {
-        border-left: none;
-        border-radius: 0 $border-radius $border-radius 0;
-        left: 0;
-      }
-
-      [dir=rtl] & {
-        border-right: none;
-        border-radius: $border-radius 0 0 $border-radius;
-        right: 0;
-      }
-    }
-
-    .wt-generation-rev-2>.wt-pedigree-lines {
-      bottom: 12.5%;
-      height: 75%;
-      top: 12.5%;
-    }
   }
 
   .wt-chart-pedigree-down,
   .wt-chart-pedigree-up {
     .wt-chart-box {
-      height: 8rem;
       margin-right: 1.5rem;
       min-width: 10rem;
     }
   }
 
   .wt-chart-pedigree-down {
-    width: -webkit-max-content;
-    width: -moz-max-content;
-    width: max-content;
-
     .wt-chart-box {
       margin-bottom: 1.5rem;
-    }
-
-    .wt-pedigree-lines {
-      border: $border-width solid $border-color;
-      border-bottom: none;
-      border-radius: $border-radius $border-radius 0 0;
-      bottom: 0;
-      height: 25%;
-      left: 25%;
-      right: 25%;
-      width: 50%;
-      z-index: -1;
-    }
-
-    .wt-generation-rev-2>.wt-pedigree-lines {
-      left: 12.5%;
-      right: 12.5%;
-      width: 75%;
     }
   }
 
   .wt-chart-pedigree-up {
-    width: -webkit-max-content;
-    width: -moz-max-content;
-    width: max-content;
-
     .wt-chart-box {
       margin-top: 1.5rem;
     }
-
-    .wt-pedigree-lines {
-      border: $border-width solid $border-color;
-      border-top: none;
-      border-radius: 0 0 $border-radius $border-radius;
-      height: 25%;
-      left: 25%;
-      right: 25%;
-      top: 0;
-      width: 50%;
-      z-index: -1;
-    }
-
-    .wt-generation-rev-2>.wt-pedigree-lines {
-      left: 12.5%;
-      right: 12.5%;
-      width: 75%;
-    }
   }
 }
 
-/* Relationships Chart */
-
+// Relationships chart
 .wt-chart-relationships {
   .wt-chart-box {
     height: 5rem;
-    width: 15rem;
-  }
-
-  .wt-chart-box-lifespan {
-    display: none;
-  }
-
-  .hline-text,
-  .vline-text {
-    font-size: $font-size-xs;
   }
 }
 
-/* Timeline Chart */
-
-.wt-route-timeline-chart {
-
-  /* Person panels */
+// Timeline chart
+.wt-route-TimelineChartModule {
+  // Person panels
   div[class*=person] {
     font-size: $font-size-sm;
     padding: 0.625rem 1rem;
@@ -1625,13 +937,13 @@ table.tv_tree {
 
   .person1 {
     background-color: map-get($theme-colors, "secondary");
-    color: $body-color;
+    color: map-get($theme-colors, "white");
 
     a {
-      color: $body-color;
+      color: map-get($theme-colors, "white");
 
       &:hover {
-        color: darken($body-color, 20%);
+        color: darken(map-get($theme-colors, "white"), 20%);
       }
     }
   }
@@ -1712,11 +1024,45 @@ table.tv_tree {
   }
 }
 
-/* FAQ */
+/**
+ * Lists
+ */
 
-.faq_list {
-  margin-bottom: $hr-margin-y;
+// Families and Individuals lists
+.wt-initials-list {
+  font-size: $font-size-base;
+
+  .wt-initial.active {
+    color: map-get($theme-colors, "primary");
+    cursor: default;
+  }
 }
+
+/**
+ * Calendar
+ */
+
+.wt-route-CalendarPage {
+
+  // Weekday labels
+  .wt-page-options-label {
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+  }
+
+  // Event list
+  .wt-page-options-value>ul {
+    margin-bottom: 0;
+
+    li:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+/**
+ * FAQ
+ */
 
 .faq {
   border-top: $border-width solid $border-color;
@@ -1730,8 +1076,12 @@ table.tv_tree {
   .faq_title {
     align-items: center;
     display: flex;
-    margin-top: -9.5rem; /* Fixed header offset */
-    padding-top: 9.5rem; /* Fixed header offset */
+
+    // Fixed header offset
+    margin-top: -9.5rem;
+
+    // Fixed header offset
+    padding-top: 9.5rem;
 
     h3 {
       flex-grow: 1;
@@ -1749,88 +1099,17 @@ table.tv_tree {
   }
 }
 
-/* Place Hierarchy */
 
-#place-hierarchy {
-  ul.list_value_wrap {
-    font-size: $font-size-sm;
-  }
-}
-
-/* Calendar */
-
-.wt-route-calendar {
-
-  /* Weekday labels */
-  .wt-page-options-label {
-    padding-top: 0.625rem;
-    padding-bottom: 0.625rem;
-  }
-
-  /* Calendar days */
-  .wt-page-options-value>div {
-    height: 6.25rem !important;
-  }
-
-  /* Calendar days */
-  .wt-page-options-value>ul {
-    margin-bottom: 0;
-
-    li:not(:last-child) {
-      margin-bottom: 1rem;
-    }
-  }
-}
-
-/* ColorBox */
-
-#cboxLoadingGraphic,
-#cboxLoadingOverlay {
-  height: 100%;
-  position: absolute;
-  width: 100%;
-}
-
-[dir] #cboxLoadingGraphic {
-  background: url("data:image/gif;base64,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") no-repeat 50%;
-}
-
-#cboxOverlay,
-#colorbox {
-  z-index: 9999;
-}
-
-[dir] #cboxContent,
-[dir] #cboxOverlay {
-  background: map-get($theme-colors, "white");
-}
-
-#cboxOverlay {
-  height: 100%;
-  position: fixed;
-  width: 100%;
-}
+/**
+ * ColorBox
+ */
 
 #cboxContent {
-  background-color: $popover-bg;
-  box-sizing: content-box;
-  height: auto !important;
-  overflow: hidden;
-  position: relative;
-
-  [dir] & {
-    border-radius: $popover-border-radius;
-    box-shadow: $popover-box-shadow;
-    padding: 1rem;
-  }
-}
-
-.cboxPhoto {
-  display: block;
-
-  [dir] & {
-    margin: auto;
-  }
+  border: none;
+  border-radius: $popover-border-radius;
+  box-shadow: $popover-box-shadow;
+  box-sizing: border-box;
+  padding: 1rem;
 }
 
 [dir] #cboxError {
@@ -1840,8 +1119,8 @@ table.tv_tree {
 
 #cboxTitle {
   font-size: $font-size-sm;
+  margin: 0;
   padding: 0.25rem 0;
-  text-align: center;
   width: 100%;
 }
 
@@ -1852,9 +1131,7 @@ table.tv_tree {
   @extend .btn;
   @extend .btn-primary !optional;
   @extend .btn-sm;
-  overflow: visible;
   padding: $btn-padding-y-xs $btn-padding-x-xs;
-  position: absolute;
 
   &:not(:last-child) {
     margin-right: 0;
@@ -1910,69 +1187,5 @@ table.tv_tree {
 
   [dir=rtl] & {
     left: 1rem;
-  }
-}
-
-/* Twitter Typahead */
-
-.twitter-typeahead {
-  width: 100%;
-
-  .input-group & {
-    display: block !important;
-
-    .tt-dropdown-menu {
-      top: 2rem !important;
-    }
-  }
-
-  .input-group.input-group-lg & {
-    .tt-dropdown-menu {
-      top: 2.75rem !important;
-    }
-  }
-
-  .input-group.input-group-sm & {
-    .tt-dropdown-menu {
-      top: 1.75rem !important;
-    }
-  }
-
-  .input-group>& {
-    flex-basis: 0;
-    flex-grow: 1;
-    flex-shrink: 1;
-  }
-
-  /* Override no left border or padding when not-first-child form controls */
-  .tt-hint+.tt-input {
-    border-left: $input-border-width solid $input-border-color !important;
-    padding-left: $input-padding-x !important;
-  }
-
-  .tt-dropdown-menu,
-  .tt-menu {
-    @extend .dropdown-menu;
-    display: none;
-    float: left;
-    left: 0;
-    min-width: 10rem;
-    position: absolute;
-    top: 100%;
-
-    .tt-dataset {
-      .tt-suggestion {
-        @extend .dropdown-item;
-      }
-    }
-  }
-
-  .active.tt-suggestion {
-    @extend .dropdown-item, .active;
-  }
-
-
-  .disabled.tt-suggestion {
-    @extend .dropdown-item, .disabled;
   }
 }
