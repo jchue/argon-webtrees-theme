@@ -67,6 +67,7 @@ return new class extends MinimalTheme implements ModuleCustomInterface, ModuleGl
         View::registerCustomView('::layouts/default', $this->name() . '::layouts/default'); // Site template
         View::registerCustomView('::modules/contact-links/footer', $this->name() . '::modules/contact-links/footer'); // Footer > contact line
         View::registerCustomView('::modules/hit-counter/footer', $this->name() . '::modules/hit-counter/footer'); // Footer > view count
+        View::registerCustomView('::modules/powered-by-webtrees/footer', $this->name() . '::modules/powered-by-webtrees/footer'); // Footer > webtrees link
         View::registerCustomView('::modules/privacy-policy/footer', $this->name() . '::modules/privacy-policy/footer'); // Footer > privacy policy link
 
         /**

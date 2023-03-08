@@ -1,0 +1,6 @@
+<?php
+
+$view = view('::modules/powered-by-webtrees/footer', get_defined_vars());
+$view = preg_replace('/my-2/', '', $view); // Remove vertical padding
+
+echo $view;
