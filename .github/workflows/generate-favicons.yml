@@ -1,0 +1,39 @@
+name: Logo and Favicon Generation
+
+on:
+  push:
+    paths:
+      - 'logo.svg'
+  workflow_dispatch:
+
+jobs:
+  make-favicons:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: install inkscape and open-sans
+        run: |
+          sudo apt-get update
+          sudo apt-get install inkscape fonts-open-sans -y
+
+      - name: checkout code
+        uses: actions/checkout@v3
+
+      - name: convert files
+        run: |
+          echo 'note inkscape version'
+          inkscape -V
+          echo 'commands will only work on inkscape older than 1.0'
+          echo 'see this stackoverflow post for more info'
+          echo 'https://stackoverflow.com/a/14174624'
+          inkscape -z -w 180 -h 180 logo.svg -e assets/apple-touch-icon.png
+          inkscape -z -w 32 -h 32 logo.svg -e assets/favicon-32.png
+          inkscape -z -w 192 -h 192 logo.svg -e assets/favicon-192.png
+
+      - name: commit changes
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "update favicons"
+          git push
